@@ -1,4 +1,4 @@
-import Btn from "./styles/Btn"
+import {Btn} from "./styles/Btn"
 
 
 import { useSelector, useDispatch } from "react-redux";

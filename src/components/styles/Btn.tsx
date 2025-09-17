@@ -2,7 +2,7 @@ import  React from 'react';
 import type { ReactNode } from 'react';
 import styled from 'styled-components';
 
-interface LayoutProps {
+interface buttonProps {
   children: ReactNode; // ReactNode 타입으로 children 지정
 }
 
@@ -17,14 +17,17 @@ const OrginBtn = styled.button`
     cursor: pointer;
 `;
 
-function Btn ({ children }: LayoutProps) {
-    console.log('렌더링')
-    return(
-        <>
-            <OrginBtn>{children}</OrginBtn>
-        </>
-    )
-}
+export const Btn = React.memo(function Btn({ children }: buttonProps) {
+  return <OrginBtn>{children}</OrginBtn>;
+});
 
-  //props 거의 안 바뀔 때 사용
-export default React.memo(Btn)
+
+const FixedDiv = styled.div`
+  position: fixed;
+  top: 10px;
+  right: 10px;
+`;
+
+export const FixdBtn = React.memo(function FixdBtn({ children }: buttonProps) {
+  return <FixedDiv>{children}</FixedDiv>;
+});

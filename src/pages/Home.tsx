@@ -1,18 +1,14 @@
 import React, { useState, useEffect  } from "react";
 import ExplaninModal from '../components/ExplaninModal';
 import ModalBtn from '../components/ModalBtn';
-import styled from 'styled-components';
 import './_home.scss'
 import HomeExplain from "../components/explain/HomeExplain";
+import { FixdBtn } from "../components/styles/Btn";
 
 // npm install react-dnd react-dnd-html5-backend 라이브러리 사용
 
 
-const FixdBtn = styled.div`
-    position: fixed;
-    top: 10px;
-    right: 10px;
-`
+
 function Home () {
     // 텍스트가 들어갈 자리 값 설정
     const [keyword1, setKeyword1] = useState("□□□");
@@ -89,9 +85,9 @@ function Home () {
                                 코드리뷰
                             </ModalBtn>
                         </FixdBtn>
-                        {/* <ModalBtn modalName="modal2" onClick={handleOpenModal}>
+                        <ModalBtn modalName="modal2" onClick={handleOpenModal}>
                             코드리뷰2
-                        </ModalBtn> */}
+                        </ModalBtn>
                         <div className='loading_title_box'>
                             <div onDrop={(e) => handleDrop(e, setKeyword1)} onDragOver={handleDragOver}>
                                 <p>안녕하세요 저는 <span>{keyword1}</span> 입니다.</p>
