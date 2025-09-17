@@ -6,25 +6,22 @@ import styled from 'styled-components';
 
 interface LayoutProps {
   children: ReactNode; // ReactNode 타입으로 children 지정
+  hideHeaderFooter?: boolean;
 }
 
 const LayoutStyle =styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100dvh - 100px);
+
 `;
 
 
-function Layout({ children }: LayoutProps) {
+function Layout({ children, hideHeaderFooter  }: LayoutProps) {
   return (
     <div>
-      <Header />
+       {!hideHeaderFooter && <Header />}
       <LayoutStyle>
         {children}
       </LayoutStyle>
-      <Footer />
+       {!hideHeaderFooter && <Footer />}
     </div>
   );
 }
