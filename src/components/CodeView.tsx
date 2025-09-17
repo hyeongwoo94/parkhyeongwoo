@@ -9,7 +9,7 @@ interface CodeViewProps {
 function CodeView({ code, language }: CodeViewProps){
     return(
         <>
-            <div>
+            <div className="code_view">
                 <SyntaxHighlighter language={language} style={tomorrow} showLineNumbers>
                     {code}
                 </SyntaxHighlighter>

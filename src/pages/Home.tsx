@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect  } from "react";
 import ExplaninModal from '../components/ExplaninModal';
 import ModalBtn from '../components/ModalBtn';
 import styled from 'styled-components';
@@ -17,21 +17,33 @@ function Home () {
     // 텍스트가 들어갈 자리 값 설정
     const [keyword1, setKeyword1] = useState("□□□");
     const [keyword2, setKeyword2] = useState("□□□");
-    const [keyword3, setKeyword3] = useState("□□□");
 
     // 반복문으로 뿌려줄 키워드 작서
-    const items = ["박형우", "김형우", "이형우"];
+    const items = ["박형우","30","김형우","20", "이형우","40","최형우","50","감형우"];
+
+    //키워드 값을 항상 랜덤 순서로 렌더링하기 위해 복제를 함
+    const [dragItems, setDragItems] = useState<string[]>([]);
+
+    // 맨 처음 렌더링될 때 한 번만 랜덤으로 섞기
+    useEffect(() => {
+        const shuffled = [...items];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+        setDragItems(shuffled);
+    }, []); 
     
     // 내가 원하는 답 지정하기
     const correctAnswer = {
         keyword1: "박형우",
-        keyword2: "김형우",
-        keyword3: "이형우",
+        keyword2: "30",
     };
 
     // 드래그 할 데이터 즉 키워드 값의 코드
     const handleDragStart = (e: React.DragEvent<HTMLLIElement>, value: string) => {
         e.dataTransfer.setData("text/plain", value);
+        e.currentTarget.classList.add("dragging"); // 드래그 시작 시 클래스 추가
     };
 
     //드래그 한 데이터를 넣을 코드의 값
@@ -53,6 +65,10 @@ function Home () {
                 e.preventDefault(); // 반드시 있어야 drop 가능
         };
 
+    const handleDragEnd = (e: React.DragEvent<HTMLLIElement>) => {
+        e.currentTarget.classList.remove("dragging");
+    };
+
     // 어떤 모달이 열렸는지 관리 (null이면 안 열림)
     const [openModal, setOpenModal] = useState<string | null>(null); //모달이 열리고 닫히고 제어
 
@@ -67,46 +83,41 @@ function Home () {
         <>
             <section className='loading'>
                 <div className='loading_wrap'>
-                    <div>
+                    <div className="loading_w">
                          <FixdBtn>
                             <ModalBtn modalName="modal1" onClick={handleOpenModal}>
                                 코드리뷰
                             </ModalBtn>
                         </FixdBtn>
-                        <ModalBtn modalName="modal2" onClick={handleOpenModal}>
+                        {/* <ModalBtn modalName="modal2" onClick={handleOpenModal}>
                             코드리뷰2
-                        </ModalBtn>
+                        </ModalBtn> */}
                         <div className='loading_title_box'>
                             <div onDrop={(e) => handleDrop(e, setKeyword1)} onDragOver={handleDragOver}>
                                 <p>안녕하세요 저는 <span>{keyword1}</span> 입니다.</p>
                             </div>
                             <div onDrop={(e) => handleDrop(e, setKeyword2)} onDragOver={handleDragOver}>
-                                <p>안녕하세요 저는 <span>{keyword2}</span> 입니다.</p>
-                            </div>
-                            <div onDrop={(e) => handleDrop(e, setKeyword3)} onDragOver={handleDragOver}>
-                                <p>안녕하세요 저는 <span>{keyword3}</span> 입니다.</p>
+                                <p>저의 나이는 <span>{keyword2}</span> 입니다.</p>
                             </div>
                         </div>
 
-                        <div className='loading_item_box'>
-                            <ul>
-                                {items.map((item) => (
-                                    <li
+                        <ul className='loading_item_box'>
+                            {dragItems.map((item) => (
+                                <li
                                     key={item}
                                     draggable
                                     onDragStart={(e) => handleDragStart(e, item)}
-                                    >
-                                    {item}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                                    onDragEnd={handleDragEnd}
+                                >
+                                    <p className="loading_item_text">{item}</p>
+                                </li>
+                            ))}
+                        </ul>
                        <div>
                             {
-                                (keyword1 !== "□□□" && keyword2 !== "□□□" && keyword3 !== "□□□") // 모두 값을 채웟는지 확인
+                                (keyword1 !== "□□□" && keyword2 !== "□□□") // 모두 값을 채웟는지 확인
                                     ? (keyword1 === correctAnswer.keyword1 &&
-                                        keyword2 === correctAnswer.keyword2 &&
-                                        keyword3 === correctAnswer.keyword3  //정답이 맞는지 확인
+                                        keyword2 === correctAnswer.keyword2  //정답이 맞는지 확인
                                         ? "정답!"
                                         : "틀렸습니다.")  // 결과
                                     : ""
@@ -115,8 +126,7 @@ function Home () {
                        <div>
                         {
                             (keyword1 === correctAnswer.keyword1 && 
-                            keyword2 === correctAnswer.keyword2 
-                            && keyword3 === correctAnswer.keyword3) ? <button>눌러</button> :""
+                            keyword2 === correctAnswer.keyword2) ? <button>눌러</button> :""
                         }
                        </div>
                     </div>

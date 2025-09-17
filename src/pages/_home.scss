@@ -6,12 +6,42 @@
         justify-content: center;
         align-items: center;
     }
+    &_w{
+        max-width: 1280px;
+        width: 100%;
+    }
     &_title_box{
         font-size: 24px;
         line-height: 1.3;
         user-select: none;
+        text-align: center;
     }
     &_item_box{
         margin-top: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+        li{
+            width:  calc(33.333% - 10px);
+            font-size: 18px;
+            border: solid 1px #333;
+            border-radius: 5px;
+            cursor: move;
+            &.dragging{
+                color: #ff0000;          /* 글자 진하게 */
+                background-color: #fff;   /* 배경 밝게 */
+                box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* 그림자 강조 */
+                opacity: 1;     
+            }
+
+        }
+    }
+    &_item_text{
+        text-align: center;
+        padding: 10px;
+        box-sizing: border-box;
+        font-size: 18px;
+        line-height: 1;
     }
 }

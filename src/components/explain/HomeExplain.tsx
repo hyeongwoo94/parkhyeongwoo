@@ -27,6 +27,7 @@ function HomeExplain(){
                         <li>드래그 한 값을 옮겨 담을 곳 감지</li>
                         <li>드래그 드롭을 할 경우 해당 값 넣기</li>
                         <li>삼항연산자로 정답이 맞을 경우와 틀릴경우 보여주는 컴포넌트 다르게 설정</li>
+                        <li>추가적으로 useEffect, floor,random을 사용해서 키워드르 매번 랜덤으로 뿌려줌</li>
                     </ul>
                 </div>
                 <CodeView language="javascript" 
