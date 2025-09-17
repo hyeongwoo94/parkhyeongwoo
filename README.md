@@ -84,4 +84,4 @@ export default tseslint.config([
 의도: 모달을 활용해서 현재 보이는 페이지의 기능들을 어떻게 사용했는지를 설명한다. => 나의 기술 스킬을 설명하는것
 ```
 
-맥북에서 git clone됫는지 확인
+맥북에서 git clone됫는지 확인111
