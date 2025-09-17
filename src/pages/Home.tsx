@@ -1,9 +1,9 @@
 import React, { useState, useEffect  } from "react";
 import ExplaninModal from '../components/ExplaninModal';
-import ModalBtn from '../components/ModalBtn';
+// import ModalBtn from '../components/ModalBtn';
 import './_home.scss'
 import HomeExplain from "../components/explain/HomeExplain";
-import { FixdBtn } from "../components/styles/Btn";
+import { FixdBtnLayout, ModalBtn } from "../components/styles/Btn";
 
 // npm install react-dnd react-dnd-html5-backend 라이브러리 사용
 
@@ -80,11 +80,11 @@ function Home () {
             <section className='loading'>
                 <div className='loading_wrap'>
                     <div className="loading_w">
-                         <FixdBtn>
+                         <FixdBtnLayout>
                             <ModalBtn modalName="modal1" onClick={handleOpenModal}>
                                 코드리뷰
                             </ModalBtn>
-                        </FixdBtn>
+                        </FixdBtnLayout>
                         <ModalBtn modalName="modal2" onClick={handleOpenModal}>
                             코드리뷰2
                         </ModalBtn>

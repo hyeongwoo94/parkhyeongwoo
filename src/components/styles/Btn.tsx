@@ -28,6 +28,23 @@ const FixedDiv = styled.div`
   right: 10px;
 `;
 
-export const FixdBtn = React.memo(function FixdBtn({ children }: buttonProps) {
+export const FixdBtnLayout = React.memo(function FixdBtn({ children }: buttonProps) {
   return <FixedDiv>{children}</FixedDiv>;
+});
+
+interface ModalBtnProps {
+    children: ReactNode; // ReactNode 타입으로 children 지정
+    onClick: (modalName: string) => void;
+    modalName: string;
+
+}
+
+export const ModalBtn = React.memo(function FixdBtn({ modalName, onClick, children  }: ModalBtnProps) {
+  return (
+      <>
+          <button type='button' onClick={() => onClick(modalName)}>
+              {children}
+          </button>
+      </>
+  );
 });
