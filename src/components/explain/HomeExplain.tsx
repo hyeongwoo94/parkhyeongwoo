@@ -1,6 +1,7 @@
+import  React from 'react';
 import CodeView from "../CodeView"
 import './_homeexplain.scss'
-function HomeExplain(){
+export const HomeExplain = React.memo(function Btn() {
     return(
         <>
             <div className="code_explain">
@@ -90,6 +91,46 @@ const handleDragEnd = (e: React.DragEvent<HTMLLIElement>) => {
             </div>
         </>
     )
-}
+});
 
-export default HomeExplain
+export const HomeExplain2 = React.memo(function Btn() {
+    return(
+        <>
+            <div className="code_explain">
+                <div className="code_explain_box">
+                    <h3 className="code_explain_title">핵심 내용</h3>
+                    <ul className="code_explain_ul">
+                        <li>
+                            react-dnd-html5-backend 라이브러리 사용
+                        </li>
+                        <li>
+                            useStatet사용
+                        </li>
+                    </ul>
+                </div>
+                <div className="code_explain_box">
+                    <h3 className="code_explain_title">구동방식</h3>
+                    <ul className="code_explain_ul">
+                        <li>useState로 빈칸에 들어갈 내용 제작</li>
+                        <li>키워드 단어들 배열로 제작</li>
+                        <li>정답 객체 지정한 변수 제작</li>
+                        <li>
+                            드래그 할 경우 해당 값을 감지
+                        </li>
+                        <li>드래그 한 값을 옮겨 담을 곳 감지</li>
+                        <li>드래그 드롭을 할 경우 해당 값 넣기</li>
+                        <li>삼항연산자로 정답이 맞을 경우와 틀릴경우 보여주는 컴포넌트 다르게 설정</li>
+                        <li>추가적으로 useEffect, floor,random을 사용해서 키워드르 매번 랜덤으로 뿌려줌</li>
+                    </ul>
+                </div>
+                <CodeView language="javascript" 
+                    code={`// 드래그 할 데이터 즉 키워드 값의 코드
+const [keyword1, setKeyword1] = useState("□□□");
+const [keyword2, setKeyword2] = useState("□□□");
+
+                    `} 
+                />
+            </div>
+        </>
+    )
+});

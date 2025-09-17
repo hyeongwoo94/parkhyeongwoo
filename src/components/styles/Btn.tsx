@@ -22,14 +22,24 @@ export const Btn = React.memo(function Btn({ children }: buttonProps) {
 });
 
 
-const FixedDiv = styled.div`
+interface FixdBtnProps {
+  children: React.ReactNode;
+  top?: string;
+  right?: string;
+  bottom?: string;
+  left?: string;
+}
+
+const FixedDiv = styled.div<FixdBtnProps>`
   position: fixed;
-  top: 10px;
-  right: 10px;
+  top: ${({ top }) => top ?? "auto"};
+  right: ${({ right }) => right ?? "auto"};
+  bottom: ${({ bottom }) => bottom ?? "auto"};
+  left: ${({ left }) => left ?? "auto"};
 `;
 
-export const FixdBtnLayout = React.memo(function FixdBtn({ children }: buttonProps) {
-  return <FixedDiv>{children}</FixedDiv>;
+export const FixdBtnLayout = React.memo(function FixdBtn({ children, top, right,  bottom,  left}: FixdBtnProps) {
+  return <FixedDiv top={top} right={right} bottom={bottom} left={left}>{children}</FixedDiv>;
 });
 
 interface ModalBtnProps {

@@ -1,15 +1,16 @@
 import React, { useState, useEffect  } from "react";
 import ExplaninModal from '../components/ExplaninModal';
-// import ModalBtn from '../components/ModalBtn';
+import {HomeExplain, HomeExplain2} from "../components/explain/HomeExplain"; // 모달의 내용들
+import { FixdBtnLayout, ModalBtn } from "../components/styles/Btn"; // 스타일 컴포넌트 가져오기
+import { useTranslation } from 'react-i18next'; // 언어변경
 import './_home.scss'
-import HomeExplain from "../components/explain/HomeExplain";
-import { FixdBtnLayout, ModalBtn } from "../components/styles/Btn";
-
-// npm install react-dnd react-dnd-html5-backend 라이브러리 사용
 
 
 
 function Home () {
+    // 언어변경
+    const { t: tHome } = useTranslation("home"); // home 안의 것들만 가져오기
+    const { t: tCommon } = useTranslation("common"); //공통 텍스트 가져오기
     // 텍스트가 들어갈 자리 값 설정
     const [keyword1, setKeyword1] = useState("□□□");
     const [keyword2, setKeyword2] = useState("□□□");
@@ -80,9 +81,9 @@ function Home () {
             <section className='loading'>
                 <div className='loading_wrap'>
                     <div className="loading_w">
-                         <FixdBtnLayout>
+                         <FixdBtnLayout top="10px" right="10px">
                             <ModalBtn modalName="modal1" onClick={handleOpenModal}>
-                                코드리뷰
+                                {tCommon("code_review")}
                             </ModalBtn>
                         </FixdBtnLayout>
                         <ModalBtn modalName="modal2" onClick={handleOpenModal}>
@@ -90,7 +91,7 @@ function Home () {
                         </ModalBtn>
                         <div className='loading_title_box'>
                             <div onDrop={(e) => handleDrop(e, setKeyword1)} onDragOver={handleDragOver}>
-                                <p>안녕하세요 저는 <span>{keyword1}</span> 입니다.</p>
+                                <p> {tHome("hi")} 저는 <span>{keyword1}</span> 입니다.</p>
                             </div>
                             <div onDrop={(e) => handleDrop(e, setKeyword2)} onDragOver={handleDragOver}>
                                 <p>저의 나이는 <span>{keyword2}</span> 입니다.</p>
@@ -135,7 +136,7 @@ function Home () {
                 <ExplaninModal onClose={handleCloseModal} content={<HomeExplain />} />
             )}
             {openModal === "modal2" && (
-                <ExplaninModal onClose={handleCloseModal} content="모달 2 내용" />
+                <ExplaninModal onClose={handleCloseModal} content={<HomeExplain2 />} />
             )}
         </>
     )

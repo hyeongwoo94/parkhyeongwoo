@@ -71,6 +71,7 @@ export default tseslint.config([
 250917
 - 리액트, 타입스트립트, 셋팅
 - 리덕스, scss, styled-component, react-router-dom, react-dnd-html5-backend,react-syntax-highlighter 설치
+- 언어변경 설정 i18next react-i18next 사용
 
 
 [페이지 정의]
