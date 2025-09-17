@@ -66,7 +66,7 @@ function Home () {
         };
 
     const handleDragEnd = (e: React.DragEvent<HTMLLIElement>) => {
-        e.currentTarget.classList.remove("dragging");
+        e.currentTarget.classList.remove("dragging"); // 추가한 클래스 지워주기
     };
 
     // 어떤 모달이 열렸는지 관리 (null이면 안 열림)

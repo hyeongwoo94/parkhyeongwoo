@@ -32,8 +32,35 @@ function HomeExplain(){
                 </div>
                 <CodeView language="javascript" 
                     code={`// 드래그 할 데이터 즉 키워드 값의 코드
+const [keyword1, setKeyword1] = useState("□□□");
+const [keyword2, setKeyword2] = useState("□□□");
+
+// 반복문으로 뿌려줄 키워드 작서
+const items = ["박형우","30","김형우","20", "이형우","40","최형우","50","감형우"];
+
+//키워드 값을 항상 랜덤 순서로 렌더링하기 위해 복제를 함
+const [dragItems, setDragItems] = useState<string[]>([]);
+
+// 맨 처음 렌더링될 때 한 번만 랜덤으로 섞기
+useEffect(() => {
+    const shuffled = [...items];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+    setDragItems(shuffled);
+}, []); 
+
+// 내가 원하는 답 지정하기
+const correctAnswer = {
+    keyword1: "박형우",
+    keyword2: "30",
+};
+
+// 드래그 할 데이터 즉 키워드 값의 코드
 const handleDragStart = (e: React.DragEvent<HTMLLIElement>, value: string) => {
     e.dataTransfer.setData("text/plain", value);
+    e.currentTarget.classList.add("dragging"); // 드래그 시작 시 클래스 추가
 };
 
 //드래그 한 데이터를 넣을 코드의 값
@@ -54,6 +81,10 @@ const handleDrop = (
         const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
             e.preventDefault(); // 반드시 있어야 drop 가능
     };
+
+const handleDragEnd = (e: React.DragEvent<HTMLLIElement>) => {
+    e.currentTarget.classList.remove("dragging"); // 추가한 클래스 지워주기
+};
                     `} 
                 />
             </div>
