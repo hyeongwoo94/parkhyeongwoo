@@ -1,20 +1,5 @@
-$mainbgcolor:#ccc;
-$maincolor: #35a3fd;
-@mixin main-text {
-  font-size: 80px;
-  font-weight:700;
-}
-@mixin sub-text {
-  font-size: 20px;
-  font-weight:400;
-}
-.main{
-    background-color: $mainbgcolor;
-    &_text{
-       @include main-text;
-       color: $maincolor;
-    }
-}
+
+
 .menu_btn{
   &_wrap{
     width: 40px;

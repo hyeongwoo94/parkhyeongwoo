@@ -1,3 +1,4 @@
+@use '../App.scss' as *;
 .loading{
     &_wrap{
         height: 100dvh;
@@ -29,10 +30,7 @@
             border-radius: 5px;
             cursor: move;
             &.dragging{
-                color: #ff0000;          /* 글자 진하게 */
-                background-color: #fff;   /* 배경 밝게 */
-                box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* 그림자 강조 */
-                opacity: 1;     
+                border-color: var(--maincolor);   /* 배경 밝게 */    
             }
 
         }

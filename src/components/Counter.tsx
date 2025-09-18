@@ -3,7 +3,7 @@ import {Btn} from "./styles/Btn"
 
 import { useSelector, useDispatch } from "react-redux";
 import type { RootState, AppDispatch } from "../redux/config/configStore";
-import { increment } from "../redux/modules/counter";
+import { increment, minus } from "../redux/modules/counter";
 
 
 
@@ -15,7 +15,7 @@ function Counter () {
         <>
             <div>{number}</div>
             <button onClick={() => dispatch(increment())}>+1</button>
-            <Btn>빼기</Btn>
+            <Btn onClick={() => dispatch(minus())}>빼기</Btn>
         </>
     )
 }

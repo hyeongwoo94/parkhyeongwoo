@@ -16,8 +16,11 @@ const counterSlice = createSlice({
     increment: (state) => {
       state.number += 1; // immer 덕분에 직접 수정 가능
     },
+    minus: (state) => {
+      state.number -= 1; // immer 덕분에 직접 수정 가능
+    },
   },
 });
 
-export const { increment } = counterSlice.actions;
+export const { increment, minus } = counterSlice.actions;
 export default counterSlice.reducer;
