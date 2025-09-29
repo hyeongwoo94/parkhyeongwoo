@@ -45,9 +45,9 @@ interface ModalBtnProps {
 export const ModalBtn = React.memo(function ModalBtn({ modalName, onClick, children  }: ModalBtnProps) {
   return (
       <>
-          <Btn onClick={() => onClick(modalName)}>
+          <button onClick={() => onClick(modalName)}>
               {children}
-          </Btn>
+          </button>
       </>
   );
 });

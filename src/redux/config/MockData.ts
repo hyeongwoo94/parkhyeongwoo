@@ -6,4 +6,5 @@ export const explanations = [
   "styled-component",
   "react-router-dom",
   "i18next react-i18next",
+  "react-icons",
 ];

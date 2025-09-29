@@ -11,3 +11,15 @@ export const CloseSvg = React.memo(function CloseSvg() {
     </>
   ) 
 });
+
+export const CodeViewBtn = React.memo(function CodeViewBtn() {
+  return(
+    <>
+        <div className='code_view_btn'>
+            <div className='code_view_btn_1'>
+                <div className='code_view_btn_2'></div>
+            </div>
+        </div>
+    </>
+  ) 
+});

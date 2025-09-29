@@ -3,7 +3,16 @@ export const en = {
     code_review: "Code view",
   },
  home: {
-    hi:'hi',
+    say:{
+      text_1:'Hellow My name is',
+      text_2:'',
+      text_3:'My age is',
+    },
+    loading:{
+      text_1:'Crack the code',
+      text_2:'and you’ll get a sneak peek',
+      text_3:'at my portfolio...!',
+    },
     quizBothRight:'Well, well… looking for little old me? Hit the button and find out',
     quizNameRight:'You guessed my name! Click on the age hint.',
     quizAgeRight:'You guessed my age! Click on the name hint.',

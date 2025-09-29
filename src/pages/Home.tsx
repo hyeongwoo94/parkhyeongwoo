@@ -3,14 +3,15 @@ import ExplaninModal from '../components/ExplaninModal';
 import {HomeExplain, HomeExplain2} from "../components/explain/HomeExplain"; // 모달의 내용들
 import { FixdBtnLayout, ModalBtn } from "../components/styles/Btn"; // 스타일 컴포넌트 가져오기
 import { useTranslation } from 'react-i18next'; // 언어변경
-import { ReactTyped } from "react-typed";
+import Loading from "../components/styles/Loading";
+import { CodeViewBtn } from "../assets/svg/SvgCode";
+
 
 
 
 function Home () {
 // -------------------------------------------------------------------------------------언어변경
     const { t: tHome } = useTranslation("home"); // home 안의 것들만 가져오기
-    const { t: tCommon } = useTranslation("common"); //공통 텍스트 가져오기
 // -------------------------------------------------------------------------------------언어변경
 
  // -------------------------------------------------------------------------------------내 나이 자동화
@@ -105,37 +106,41 @@ function Home () {
     const handleCloseModal = () => {
         setOpenModal(null); //해당 모달 닫기
     };
+
+    const [showLoading, setShowLoading] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+        setShowLoading(false); // 10초 후 Loading 제거
+        }, 16000); // 10000ms = 10초
+
+        return () => clearTimeout(timer);
+    }, []);
     return(
         <>
-            <section className='loading'>
-                <div className='loading_wrap'>
-                    <div className="loading_w">
-                         <FixdBtnLayout top="10px" right="10px">
+            {showLoading && <Loading />}
+            <section className='home'>
+                <div className='home_wrap'>
+                    <div className="home_w">
+                         <FixdBtnLayout bottom="15px" right="15px">
                             <ModalBtn modalName="modal1" onClick={handleOpenModal}>
-                                {tCommon("code_review")}
+                               <CodeViewBtn />
                             </ModalBtn>
                         </FixdBtnLayout>
                         <ModalBtn modalName="modal2" onClick={handleOpenModal}>
-                            코드리뷰2
+                            <CodeViewBtn />
                         </ModalBtn>
-                        <div className='loading_title_box'>
-                            <h2>
-                                <ReactTyped
-                                    strings={["안녕하세요", "리액트에서 타이핑 효과!","문제를"]}
-                                    typeSpeed={80}
-                                    backSpeed={80}
-                                    loop
-                                />
-                            </h2>
+                        <div className='home_title_box'>
+
                             <div onDrop={(e) => handleDrop(e, setKeyword1Key)} onDragOver={handleDragOver}>
-                                <p> {tHome("hi")} 저는 <span>{keyword1Key ? dragItems.find(i => i.key === keyword1Key)?.value : "□□□"}</span> 입니다.</p>
+                                <p>{tHome("say.text_1")} <span>{keyword1Key ? dragItems.find(i => i.key === keyword1Key)?.value : "□□□"}</span> {tHome("say.text_2")}</p>
                             </div>
                             <div onDrop={(e) => handleDrop(e, setKeyword2Key)} onDragOver={handleDragOver}>
-                                <p>저의 나이는 <span>{keyword2Key ? dragItems.find(i => i.key === keyword2Key)?.value : "□□□"}</span> 입니다.</p>
+                                <p>{tHome("say.text_3")} <span>{keyword2Key ? dragItems.find(i => i.key === keyword2Key)?.value : "□□□"}</span>  {tHome("say.text_2")}</p>
                             </div>
                         </div>
 
-                        <ul className='loading_item_box'>
+                        <ul className='home_item_box'>
                               {shuffledItems.map(item => (
                                 <li
                                 key={item.key}
@@ -143,7 +148,7 @@ function Home () {
                                 onDragStart={(e) => handleDragStart(e, item.key)}
                                 onDragEnd={handleDragEnd}
                                 >
-                                <p className="loading_item_text">{item.value}</p>
+                                <p className="home_item_text">{item.value}</p>
                                 </li>
                             ))}
                         </ul>

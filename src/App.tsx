@@ -3,8 +3,9 @@ import  Router  from './shared/Router'
 import { useTranslation } from "react-i18next";
 import "./shared/i18n"; // 초기화
 import './App.scss'
-import { Btn, FixdBtnLayout } from './components/styles/Btn';
-
+import { FixdBtnLayout } from './components/styles/Btn';
+import { MdDarkMode } from "react-icons/md";
+import { CiLight } from "react-icons/ci";
 function App() {
     const { i18n } = useTranslation();
     const [lang, setLang] = useState("ko");
@@ -28,15 +29,15 @@ function App() {
     }, [theme]);
     return (
       <>
-        <FixdBtnLayout bottom='10px' right='10px'>
-            <Btn onClick={toggleLanguage}>
-              {lang === "ko" ? "English로 변경" : "한국어로 변경"}
-            </Btn>
+        <FixdBtnLayout top='15px' right='15px'>
+            <button className='lang_btn' onClick={toggleLanguage}>
+              {lang === "ko" ? "En" : "Ko"}
+            </button>
         </FixdBtnLayout>
-        <FixdBtnLayout top='10px' right='100px'>
-            <Btn onClick={toggleTheme}>
-              {theme === "dark" ? "light" : "dark"}
-            </Btn>
+        <FixdBtnLayout top='15px' left='15px'>
+            <button onClick={toggleTheme}>
+              {theme === "dark" ? <CiLight /> : <MdDarkMode />}
+            </button>
         </FixdBtnLayout>
         <Router/>
       </>

@@ -8,6 +8,10 @@
     --main-btn-text:#374151;
     // svg 색상
     --stroke-color: #0F1B2A;
+    //코드리뷰 버튼 색상
+    --codeBtn-bg1:#fff;
+    --codeBtn-bg2:#374151;
+    --codeBtn-bg3:#445d85;
 }
 [data-theme="dark"] {
     --main-bg:#374151;
@@ -19,28 +23,31 @@
     --main-btn-text:#3B82F6;
      // svg 색상
     --stroke-color: #F3F4F6;
+    //코드리뷰 버튼 색상
+    --codeBtn-bg1:#374151;
+    --codeBtn-bg2:#3B82F6;
+    --codeBtn-bg3:rgb(87, 135, 212);
 }
 
 @mixin main-title($font-size:24px, $font-weight:700, $line-height:1) {
     font-size: $font-size;
     font-weight: $font-weight;
     line-height: $line-height;
+    @media (max-width:768px) {
+        font-size: 18px;
+        font-weight: 700;
+    }
 }
 @mixin main-text ($font-size:18px, $font-weight:400, $line-height:1){
     font-size: $font-size;
     font-weight:$font-weight;
     line-height: $line-height;
-}
-@media (max-width:768px) {
-    @mixin main-title {
-        font-size: 20px;
-        font-weight:700;
-    }
-    @mixin main-text {
-        font-size: 14px;
-        font-weight:400;
+    @media (max-width:768px) {
+        font-size: 12px;
+        font-weight: 400;
     }
 }
+
 /* 전체 스크롤바 스타일 */
 ::-webkit-scrollbar {
   width: 12px; /* 세로 스크롤바 너비 */
@@ -131,7 +138,9 @@ body{
     }
 }
 // 모달 기본값
-
+.lang_btn{
+    @include main-title
+}
 // 코드 보여주기 view
 .code_view{
     user-select: none;
@@ -150,5 +159,89 @@ body{
     &:hover {
         background-color: var(--main-btn-border);
         color: var(--main-btn-bg);
+    }
+}
+.loading{
+    background-color: transparent;
+    &_top{
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 50dvh;
+        width: 100%;
+        background-color: var(--main-bg);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        transform: translateY(0); // 기본 닫힘
+        z-index: 999;
+        h2{
+            @include main-title($line-height:1.5)
+        }
+    }
+    &_bottom{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        height: 50dvh;
+        width: 100%;
+        background-color: var(--main-bg);
+        transform: translateY(0); // 기본 닫힘
+        z-index: 999;
+    }
+    &.open {
+    .loading_top {
+      transform: translateY(-100%);
+      transition: all 0.6s;
+    }
+    .loading_bottom {
+      transform: translateY(100%);
+      transition: all 0.6s;
+    }
+  }
+}
+.code_view_btn{
+    width: 24px;
+    height: 24px;
+    border-radius: 100%;
+    background-color: var(--codeBtn-bg1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+       
+    &_1{
+        width: 20px;
+        height: 20px;
+        border-radius: 100%;
+        background-color: var(--codeBtn-bg2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        
+    }
+    &_2{
+        width: 16px;
+        height: 16px;
+         border-radius: 100%;
+        background-color: var(--codeBtn-bg3);
+        animation: ripple 1s ease-out infinite;
+      
+    }
+}
+@keyframes ripple {
+    0% {
+        transform: scale(0.5);
+        opacity: 1;
+    }
+    70% {
+        transform: scale(2);
+        opacity: 0.3;
+    }
+    100% {
+        transform: scale(3);
+        opacity: 0;
     }
 }
