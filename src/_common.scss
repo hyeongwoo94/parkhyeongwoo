@@ -1,22 +1,46 @@
 :root{
-    --mainbgcolor:#fff;
-    --maincolor: #333;
-    --maintextcolor:#333;
+    --main-bg:#fff;
+    --main-color: #374151;
+    --main-color-text:#374151;
+    // 기본 버튼
+    --main-btn-bg:#fff;
+    --main-btn-border:#374151;
+    --main-btn-text:#374151;
+    // svg 색상
+    --stroke-color: #0F1B2A;
 }
 [data-theme="dark"] {
-    --mainbgcolor:#374151;
-    --maincolor: #3B82F6;
-    --maintextcolor:#F3F4F6;
+    --main-bg:#374151;
+    --main-color: #3B82F6;
+    --main-color-text:#F3F4F6;
+    // 기본버튼
+    --main-btn-bg:#374151;
+    --main-btn-border:#3B82F6;
+    --main-btn-text:#3B82F6;
+     // svg 색상
+    --stroke-color: #F3F4F6;
 }
 
-    @mixin main-text {
-        font-size: 80px;
+@mixin main-title($font-size:24px, $font-weight:700, $line-height:1) {
+    font-size: $font-size;
+    font-weight: $font-weight;
+    line-height: $line-height;
+}
+@mixin main-text ($font-size:18px, $font-weight:400, $line-height:1){
+    font-size: $font-size;
+    font-weight:$font-weight;
+    line-height: $line-height;
+}
+@media (max-width:768px) {
+    @mixin main-title {
+        font-size: 20px;
         font-weight:700;
     }
-    @mixin sub-text {
-        font-size: 20px;
+    @mixin main-text {
+        font-size: 14px;
         font-weight:400;
     }
+}
 /* 전체 스크롤바 스타일 */
 ::-webkit-scrollbar {
   width: 12px; /* 세로 스크롤바 너비 */
@@ -24,19 +48,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--mainbgcolor); /* 스크롤바 트랙 배경 */
+  background: var(--main-bg); /* 스크롤바 트랙 배경 */
 
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--maincolor); /* 스크롤바 색상 */
+  background-color: var(--main-color); /* 스크롤바 색상 */
   border-radius: 6px;
-  border: 3px solid var(--mainbgcolor); /* 여백 효과 */
+  border: 3px solid var(--main-bg); /* 여백 효과 */
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background-color: #0ea5e9; /* 호버 시 색상 */
-}
 
 @font-face {
     font-family: 'Sweet';
@@ -61,9 +82,9 @@ body[data-lang="en"] {
 
 body{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background-color: var(--mainbgcolor);
-    color: var(--maintextcolor);
-    @include sub-text()
+    background-color: var(--main-bg);
+    color: var(--main-color-text);
+    @include main-text();
 }
 
 // 모달 기본값
@@ -87,18 +108,26 @@ body{
     &_500w{
         width: 100%;
         max-width: 1000px;
+        @media (max-width:768px) {
+            width: 95%;
+        }
     }
     &_box{
-        background-color: var(--mainbgcolor);
-        border: solid 1px var(--maincolor);
+        background-color: var(--main-bg);
+        border: solid 1px var(--main-color);
         padding: 20px;
         box-sizing: border-box;
         border-radius: 10px;
     }
     &_cont{
         margin-top: 10px;
-        max-height: 500px;
+        max-height: 70dvh;
         overflow: auto;
+    }
+    &_close{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
     }
 }
 // 모달 기본값
@@ -110,11 +139,16 @@ body{
     font-size: 16px !important;
 }
 
-button{
-    border: solid 1px var(--maincolor);
-    color: var(--maincolor);
-    background-color: var(--mainbgcolor);
+.common_btn{
+    border: solid 1px var(--main-btn-border);
+    color: var(--main-btn-text);
+    background-color: var(--main-btn-bg);
+    padding: 5px 10px;
+    border-radius: 5px;
+    @include main-text($line-height:1);
+    cursor: pointer;
     &:hover {
-        background-color: var(--mainbgcolor); // 호버 시 색상 변경
+        background-color: var(--main-btn-border);
+        color: var(--main-btn-bg);
     }
 }

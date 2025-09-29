@@ -3,7 +3,6 @@ import  Router  from './shared/Router'
 import { useTranslation } from "react-i18next";
 import "./shared/i18n"; // 초기화
 import './App.scss'
-import './_common.scss'
 import { Btn, FixdBtnLayout } from './components/styles/Btn';
 
 function App() {

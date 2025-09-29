@@ -8,21 +8,11 @@ interface buttonProps {
 }
 
 const OrginBtn = styled.button`
-    outline: none;
-    padding: 5px 10px;
-    box-sizing: border-box;
-   
-    border: none;
-    border-radius: 5px;
 
-    cursor: pointer;
-  
-
-  
 `;
 
 export const Btn = React.memo(function Btn({ children, onClick }: buttonProps) {
-  return <OrginBtn onClick={onClick}>{children}</OrginBtn>;
+  return <OrginBtn className='common_btn' onClick={onClick}>{children}</OrginBtn>;
 });
 
 

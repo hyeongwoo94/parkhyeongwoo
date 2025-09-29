@@ -1,0 +1,32 @@
+@use '../../common' as var;
+.code_explain{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    &_title{
+        @include var.main-title($line-height: 1.2);
+    }
+    &_ul{
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        li{
+            @include var.main-text;
+        }
+    }
+    &_flex{
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        li{
+            @include var.main-text;
+            border-radius: 4px;
+            padding: 5px 6px;
+            box-sizing: border-box;
+            border: solid 1px var(--main-btn-border);
+        }
+    }
+}

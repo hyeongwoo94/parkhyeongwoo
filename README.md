@@ -12,7 +12,11 @@
  - 문제1 => 드래그한 한 텍스트값은 변하지 않는다.
 
 
-
+250929
+ - scss 최적화
+ - commone 변수 지정 => 새로운 scss를 구출 할 때 항상 @use common을 해줘야 한다.
+ - app에 모든 scss import
+ - style-componet를 사용하지만 색상, 폰트 사이즈 등은 클래스로 제어, 실시간으로 변경되는 값만 style-    componet에 적용
 [페이지 정의]
 
 ```js

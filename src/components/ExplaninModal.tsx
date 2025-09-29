@@ -1,5 +1,5 @@
 import React from 'react';
-import { Btn } from './styles/Btn';
+import { CloseSvg } from '../assets/svg/SvgCode';
 
 interface ExplaninModalProps {
    onClose: () => void;
@@ -13,7 +13,11 @@ function ExplaninModal({ onClose, content }: ExplaninModalProps){
                 <div className='modal_bg' onClick={onClose}>
                     {/* 여기서 온클릭은 클릭 버블링을 방지해준다. */}
                     <div className="modal_500w modal_box"  onClick={(e) => e.stopPropagation()}>
-                        <Btn onClick={onClose}>닫기</Btn>
+                        <div className='modal_close'>
+                            <button onClick={onClose}>
+                                <CloseSvg/>
+                            </button>
+                        </div>
                         <div className="modal_cont">
                            <div>
                              {content}

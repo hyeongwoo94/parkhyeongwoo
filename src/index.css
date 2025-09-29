@@ -30,6 +30,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	word-break: keep-all;
 }
 ol, ul {
 	list-style: none;
@@ -45,4 +46,14 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+button{
+	margin: 0;
+	padding: 0;
+	border: none;
+	background: none;
+	color: inherit;
+	font: inherit;
+	line-height: normal;
+	cursor: pointer;
 }

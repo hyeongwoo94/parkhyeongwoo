@@ -3,7 +3,6 @@ import ExplaninModal from '../components/ExplaninModal';
 import {HomeExplain, HomeExplain2} from "../components/explain/HomeExplain"; // 모달의 내용들
 import { FixdBtnLayout, ModalBtn } from "../components/styles/Btn"; // 스타일 컴포넌트 가져오기
 import { useTranslation } from 'react-i18next'; // 언어변경
-import './_home.scss'
 import { ReactTyped } from "react-typed";
 
 
