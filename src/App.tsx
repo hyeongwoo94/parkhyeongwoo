@@ -9,19 +9,24 @@ import { Btn, FixdBtnLayout } from './components/styles/Btn';
 function App() {
     const { i18n } = useTranslation();
     const [lang, setLang] = useState("ko");
-     const [theme, setTheme] = useState<"light" | "dark">("light");
+    const [theme, setTheme] = useState<"light" | "dark">("light");
 
     const toggleLanguage = () => {
       const newLang = lang === "ko" ? "en" : "ko"; // 현재 언어 반대
       i18n.changeLanguage(newLang);
       setLang(newLang);
     };
+
     useEffect(() => {
-      document.body.setAttribute("data-theme", theme); // body에 data-theme 적용
-    }, [theme]);
+      document.body.setAttribute("data-lang", lang);
+    }, [lang]);
+
     const toggleTheme = () => {
       setTheme(prev => (prev === "light" ? "dark" : "light"));
     };
+    useEffect(() => {
+      document.body.setAttribute("data-theme", theme); // body에 data-theme 적용
+    }, [theme]);
     return (
       <>
         <FixdBtnLayout bottom='10px' right='10px'>

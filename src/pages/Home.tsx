@@ -129,7 +129,7 @@ function Home () {
                                 />
                             </h2>
                             <div onDrop={(e) => handleDrop(e, setKeyword1Key)} onDragOver={handleDragOver}>
-                                <p> {tHome("hi")} 저는 <span>{keyword1Key ? tHome(keyword1Key) : "□□□"}</span> 입니다.</p>
+                                <p> {tHome("hi")} 저는 <span>{keyword1Key ? dragItems.find(i => i.key === keyword1Key)?.value : "□□□"}</span> 입니다.</p>
                             </div>
                             <div onDrop={(e) => handleDrop(e, setKeyword2Key)} onDragOver={handleDragOver}>
                                 <p>저의 나이는 <span>{keyword2Key ? dragItems.find(i => i.key === keyword2Key)?.value : "□□□"}</span> 입니다.</p>
@@ -148,6 +148,7 @@ function Home () {
                                 </li>
                             ))}
                         </ul>
+                        {/* 틀렷을 경우는 alert으로 하고 정답일 경우 버튼을 추가해주자. */}
                        <div>
                            {(keyword1Key && keyword2Key) 
                             ? (keyword1Key === correctAnswer.keyword1Key && keyword2Key === correctAnswer.keyword2Key
@@ -155,7 +156,7 @@ function Home () {
                             : keyword1Key === correctAnswer.keyword1Key ? tHome("quizNameRight")
                             : keyword2Key === correctAnswer.keyword2Key ? tHome("quizAgeRight")
                             : tHome("quizBothWrong"))
-                            : tHome("quizBothWrong")}
+                            : ""}
                        </div>
                        <div>
                         {
