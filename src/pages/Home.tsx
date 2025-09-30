@@ -6,6 +6,8 @@ import { useTranslation } from 'react-i18next'; // 언어변경
 import Loading from "../components/styles/Loading";
 import { CodeViewBtn } from "../assets/svg/SvgCode";
 import Alert from "../components/Alert";
+import { useNavigate } from "react-router-dom";
+
 
 
 interface AlertItem {
@@ -14,15 +16,15 @@ interface AlertItem {
 }
 
 function Home () {
+// -------------------------------------------------------------------------------------페이지 이동
+    const navigate = useNavigate();
 // -------------------------------------------------------------------------------------언어변경
     const { t: tHome } = useTranslation("home"); // home 안의 것들만 가져오기
-// -------------------------------------------------------------------------------------언어변경
 
  // -------------------------------------------------------------------------------------내 나이 자동화
     const birthYear = 1994;
     const currentYear = new Date().getFullYear();  // 현재 연도 가져오기
     const age = currentYear - birthYear;           // 만 나이 계산 (단순)
-// -------------------------------------------------------------------------------------내 나이 자동화
 
 // ----------------------------------------------------------------------------------------------드래그 관련
     // 드래그 가능한 아이템 key
@@ -181,20 +183,21 @@ function Home () {
                         </div>
                         <div className="answer">
                             <div className="answer_text">
-                            {(keyword1Key && keyword2Key) 
-                                ? (keyword1Key === correctAnswer.keyword1Key && keyword2Key === correctAnswer.keyword2Key
-                                ? tHome("quiz.BothRight")
-                                : keyword1Key === correctAnswer.keyword1Key ? tHome("quiz.NameRight")
-                                : keyword2Key === correctAnswer.keyword2Key ? tHome("quiz.AgeRight")
-                                : tHome("quiz.BothWrong"))
-                                : ""}
+                                {(keyword1Key && keyword2Key) 
+                                    ? (keyword1Key === correctAnswer.keyword1Key && keyword2Key === correctAnswer.keyword2Key
+                                    ? tHome("quiz.BothRight")
+                                    : keyword1Key === correctAnswer.keyword1Key ? tHome("quiz.NameRight")
+                                    : keyword2Key === correctAnswer.keyword2Key ? tHome("quiz.AgeRight")
+                                    : tHome("quiz.BothWrong"))
+                                    : ""}
+                                <div className="answer_success">
+                                    {
+                                        (keyword1Key === correctAnswer.keyword1Key && 
+                                        keyword2Key === correctAnswer.keyword2Key) ? <button className="common_btn" onClick={() => navigate("/Sub1")}>{tHome("wellcom")}</button> :""
+                                    }
+                                </div>
                             </div>
-                            <div className="answer_success">
-                                {
-                                    (keyword1Key === correctAnswer.keyword1Key && 
-                                    keyword2Key === correctAnswer.keyword2Key) ? <button>눌러</button> :""
-                                }
-                            </div>
+
                         </div>
                     </div>
                 </div>

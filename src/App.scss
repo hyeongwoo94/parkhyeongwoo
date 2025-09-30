@@ -7,6 +7,18 @@
 @use './components/explain/explain';
 
 
+.lang_btn{
+    @include var.main-text;
+}
+.fixed_top_btn{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    svg{
+
+    }
+}
+
 .menu_btn{
   &_wrap{
     width: 40px;
@@ -39,23 +51,23 @@
     background-color: #fff;
   }
 }
- .menu_btn_wrap.open{
-    .menu_btn_line:nth-child(2){
-      height: 0;
-    }
-    .menu_btn_item{
-      width: 0;
-      transition: all 0.6s;
-      transition-delay: 0.2s; 
-    }
-    .menu_btn_line:nth-child(1){
-      transform: rotate(45deg) translate(11px, 10px);
-         transition: all 0.6s;
-         transition-delay: 0.8s; 
-    }
-    .menu_btn_line:nth-child(3){
-      transform: rotate(-45deg) translate(10px, -10px);
-         transition: all 0.6s;
-         transition-delay: 0.8s; 
-    }
+.menu_btn_wrap.open{
+  .menu_btn_line:nth-child(2){
+    height: 0;
   }
+  .menu_btn_item{
+    width: 0;
+    transition: all 0.6s;
+    transition-delay: 0.2s; 
+  }
+  .menu_btn_line:nth-child(1){
+    transform: rotate(45deg) translate(11px, 10px);
+        transition: all 0.6s;
+        transition-delay: 0.8s; 
+  }
+  .menu_btn_line:nth-child(3){
+    transform: rotate(-45deg) translate(10px, -10px);
+        transition: all 0.6s;
+        transition-delay: 0.8s; 
+  }
+}

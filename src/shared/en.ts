@@ -27,6 +27,7 @@ export const en = {
     item2:'Brad Pitt',
     item3:'Choi Hyeong woo',
     item4:'Smith',
+    wellcom:'Here comes your new favorite person!'
   },
   login: {
     welcome: "다시 오신 것을 환영합니다",

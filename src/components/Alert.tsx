@@ -17,7 +17,7 @@ function Alert({children, onClose}:AlertProps){
     return(
         <>
             <div className='alert'>
-                <p className='alert_name'>
+                <p>
                     {children}
                 </p>
             </div>

@@ -56,51 +56,6 @@
     }
 }
 
-/* 전체 스크롤바 스타일 */
-::-webkit-scrollbar {
-  width: 12px; /* 세로 스크롤바 너비 */
-  height: 12px; /* 가로 스크롤바 높이 */
-}
-
-::-webkit-scrollbar-track {
-  background: var(--main-bg); /* 스크롤바 트랙 배경 */
-
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: var(--main-color); /* 스크롤바 색상 */
-  border-radius: 6px;
-  border: 3px solid var(--main-bg); /* 여백 효과 */
-}
-
-
-@font-face {
-    font-family: 'Sweet';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Light.woff2') format('woff2');
-    font-weight: 300;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'DepartureMono';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2409-1@1.0/DepartureMono-Regular.woff2') format('woff2');
-    font-weight: normal;
-    font-display: swap;
-}
-body[data-lang="ko"] {
- font-family: 'Sweet','Noto Sans', sans-serif;;
-}
-
-body[data-lang="en"] {
-  font-family:  'Roboto', 'Open Sans', sans-serif;
-}
-
-
-body{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background-color: var(--main-bg);
-    color: var(--main-color-text);
-    @include main-text();
-}
 
 // 모달 기본값
 .modal{
@@ -145,15 +100,19 @@ body{
         align-items: center;
     }
 }
-// 모달 기본값
-.lang_btn{
+
+.alert{
+    position: fixed;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 15px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    color: var(--alert-text);
+    background-color: var(--alert-bg);
     @include main-text;
-}
-// 코드 보여주기 view
-.code_view{
-    user-select: none;
-    margin: 0 !important;
-    font-size: 16px !important;
+    box-shadow: var(--alert-shadow);
 }
 
 .common_btn{
@@ -218,6 +177,14 @@ body{
     }
   }
 }
+
+// 코드 보여주기 view
+.code_view{
+    user-select: none;
+    margin: 0 !important;
+    font-size: 16px !important;
+}
+// 코드 설명 보여주기 버튼
 .code_view_btn{
     width: 24px;
     height: 24px;
@@ -262,24 +229,4 @@ body{
         opacity: 0;
     }
 }
-.fixed_top_btn{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    svg{
 
-    }
-}
-.alert{
-    position: fixed;
-    top: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 10px 15px;
-    box-sizing: border-box;
-    border-radius: 10px;
-    color: var(--alert-text);
-    background-color: var(--alert-bg);
-    @include main-text;
-    box-shadow: var(--alert-shadow);
-}

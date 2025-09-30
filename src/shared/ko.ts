@@ -23,10 +23,11 @@ export const ko = {
       NameHint:"이름힌트",
       AgeHint:"나이힌트",
     },
-      item1:'박형우',
-      item2:'강동원',
-      item3:'장동건',
-      item4:'남형우',
+    item1:'박형우',
+    item2:'강동원',
+    item3:'장동건',
+    item4:'남형우',
+    wellcom:'저를 소개하겠습니다'
   },
   login: {
     welcome: "다시 오신 것을 환영합니다",
