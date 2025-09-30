@@ -1,36 +1,42 @@
 export const ko = {
-  common: {
-    code_review: "코드리뷰",
-  },
-  home: {
-    say:{
-      text_1:'안녕하세요 제 이름은',
-      text_2:"입니다.",
-      text_3:"제 나이는"
+    common: {
+        code_review: "코드리뷰",
     },
-    loading:{
-      text_1:'반갑습니다.',
-      text_2:'문제를 풀어주시면',
-      text_3:'제 포트폴리오를 보실 수 있습니다...',
+    headerMenu:{
+        count: "카운트",
+        todo: "투두",
+        weather: "날씨",
+        shop: "장바구니"
     },
-    quiz:{
-      BothRight:'저의 대한 관심이 많으시군요. 저를 더욱 알고 싶으신가요?',
-      NameRight:'제 이름은 맞혔네요! 나이 힌트를 누르세요. ',
-      AgeRight:'제 나이는 맞혔네요! 이름 힌트를 누르세요.',
-      BothWrong:'하! 어떻게 이곳에 들어오셨죠?',
-      HintName:'저는 박씨 입니다',
-      HintAge:'저는 1994년생입니다',
-      NameHint:"이름힌트",
-      AgeHint:"나이힌트",
+    home: {
+        say:{
+        text_1:'안녕하세요 제 이름은',
+        text_2:"입니다.",
+        text_3:"제 나이는"
+        },
+        loading:{
+        text_1:'반갑습니다.',
+        text_2:'문제를 풀어주시면',
+        text_3:'제 포트폴리오를 보실 수 있습니다...',
+        },
+        quiz:{
+        BothRight:'저의 대한 관심이 많으시군요. 저를 더욱 알고 싶으신가요?',
+        NameRight:'제 이름은 맞혔네요! 나이 힌트를 누르세요. ',
+        AgeRight:'제 나이는 맞혔네요! 이름 힌트를 누르세요.',
+        BothWrong:'하! 어떻게 이곳에 들어오셨죠?',
+        HintName:'저는 박씨 입니다',
+        HintAge:'저는 1994년생입니다',
+        NameHint:"이름힌트",
+        AgeHint:"나이힌트",
+        },
+        item1:'박형우',
+        item2:'강동원',
+        item3:'장동건',
+        item4:'남형우',
+        wellcom:'저를 소개하겠습니다'
     },
-    item1:'박형우',
-    item2:'강동원',
-    item3:'장동건',
-    item4:'남형우',
-    wellcom:'저를 소개하겠습니다'
-  },
-  login: {
-    welcome: "다시 오신 것을 환영합니다",
-    logout: "로그아웃",
-  },
+    login: {
+        welcome: "다시 오신 것을 환영합니다",
+        logout: "로그아웃",
+    },
 };

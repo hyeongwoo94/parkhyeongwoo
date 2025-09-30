@@ -29,7 +29,7 @@ function App() {
     }, [theme]);
     return (
       <>
-        <FixdBtnLayout top='15px' right='15px'>
+        <FixdBtnLayout bottom='15px' right='15px'>
             <div className='fixed_top_btn'>
                 <button onClick={toggleTheme}>
                     {theme === "dark" ? <CiLight size={24} /> : <MdDarkMode size={24} />}

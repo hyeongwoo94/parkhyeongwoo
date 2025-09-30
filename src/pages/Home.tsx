@@ -142,7 +142,7 @@ function Home () {
             <section className='home'>
                 <div className='home_wrap'>
                     <div className="home_w">
-                         <FixdBtnLayout bottom="15px" right="15px">
+                         <FixdBtnLayout bottom="50px" right="15px">
                             <ModalBtn modalName="modal1" onClick={handleOpenModal}>
                                <CodeViewBtn />
                             </ModalBtn>
@@ -193,7 +193,7 @@ function Home () {
                                 <div className="answer_success">
                                     {
                                         (keyword1Key === correctAnswer.keyword1Key && 
-                                        keyword2Key === correctAnswer.keyword2Key) ? <button className="common_btn" onClick={() => navigate("/Sub1")}>{tHome("wellcom")}</button> :""
+                                        keyword2Key === correctAnswer.keyword2Key) ? <button className="common_btn" onClick={() => navigate("/CountPage")}>{tHome("wellcom")}</button> :""
                                     }
                                 </div>
                             </div>

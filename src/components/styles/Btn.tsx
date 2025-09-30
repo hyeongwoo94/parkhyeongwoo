@@ -26,6 +26,7 @@ interface FixdBtnProps {
 
 const FixedDiv = styled.div<FixdBtnProps>`
   position: fixed;
+  z-index: 99999;
   top: ${({ top }) => top ?? "auto"};
   right: ${({ right }) => right ?? "auto"};
   bottom: ${({ bottom }) => bottom ?? "auto"};

@@ -22,6 +22,11 @@
  - url로 시작 언어 제어 (https://hyeongwoo94.github.io/parkhyeongwoo/#/en, https://hyeongwoo94.github.io/parkhyeongwoo/#/ko)
 [페이지 정의]
 
+250930
+    - home에서 드래그드롭이 모바일에서 안되는거 확인
+    - 피시용, 모바일용 따로 제작? 아님 현재 만든 것을 전체 수정?
+    - alert을 훅으로 변환해서 사용해야한다. 그래야 유지보수에서 편함 
+
 ```js
 <Home>
 의도: 드래그 드롭을 활용해서 나의 페이지를 들어가기위해 재미요소를 더했다.
