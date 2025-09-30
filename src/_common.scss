@@ -12,6 +12,10 @@
     --codeBtn-bg1:#fff;
     --codeBtn-bg2:#374151;
     --codeBtn-bg3:#445d85;
+    //alert 색상
+    --alert-text:#fff;
+    --alert-bg:#374151;
+    --alert-shadow:rgb(38, 57, 77) 0px 2px 4px 0px, rgb(38, 57, 77) 0px 2px 16px 0px;
 }
 [data-theme="dark"] {
     --main-bg:#374151;
@@ -27,6 +31,10 @@
     --codeBtn-bg1:#374151;
     --codeBtn-bg2:#3B82F6;
     --codeBtn-bg3:rgb(87, 135, 212);
+    //alert 색상
+    --alert-text:#fff;
+    --alert-bg:#3B82F6;
+    --alert-shadow:rgb(105, 159, 218)0px 2px 4px 0px, rgb(105, 159, 218) 0px 2px 16px 0px;;
 }
 
 @mixin main-title($font-size:24px, $font-weight:700, $line-height:1) {
@@ -139,7 +147,7 @@ body{
 }
 // 모달 기본값
 .lang_btn{
-    @include main-title
+    @include main-text;
 }
 // 코드 보여주기 view
 .code_view{
@@ -159,6 +167,15 @@ body{
     &:hover {
         background-color: var(--main-btn-border);
         color: var(--main-btn-bg);
+    }
+    &.reverse{
+        border: solid 1px  var(--main-btn-text);
+        color: var(--main-btn-bg);
+        background-color: var(--main-btn-text);
+            &:hover {
+        background-color: var(--main-btn-bg);
+        color: var(--main-btn-border);
+    }
     }
 }
 .loading{
@@ -244,4 +261,25 @@ body{
         transform: scale(3);
         opacity: 0;
     }
+}
+.fixed_top_btn{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    svg{
+
+    }
+}
+.alert{
+    position: fixed;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 15px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    color: var(--alert-text);
+    background-color: var(--alert-bg);
+    @include main-text;
+    box-shadow: var(--alert-shadow);
 }

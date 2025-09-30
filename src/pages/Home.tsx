@@ -5,9 +5,13 @@ import { FixdBtnLayout, ModalBtn } from "../components/styles/Btn"; // 스타일
 import { useTranslation } from 'react-i18next'; // 언어변경
 import Loading from "../components/styles/Loading";
 import { CodeViewBtn } from "../assets/svg/SvgCode";
+import Alert from "../components/Alert";
 
 
-
+interface AlertItem {
+    id: number;
+    message: string;
+}
 
 function Home () {
 // -------------------------------------------------------------------------------------언어변경
@@ -116,6 +120,20 @@ function Home () {
 
         return () => clearTimeout(timer);
     }, []);
+
+     // 여러 Alert를 관리하기 위한 상태 (배열)
+    const [alerts, setAlerts] = useState<AlertItem[]>([]);
+    // 새로운 Alert 추가 함수
+    const addAlert = (message: string) => {
+        const id = Date.now(); // 간단하게 고유 id 생성
+        setAlerts(prev => [...prev, { id, message }]);
+    };
+    // Alert 제거 함수
+    const removeAlert = (id: number) => {
+        setAlerts(prev => prev.filter(alert => alert.id !== id));
+    };
+
+    //>>alert을 쓸때마다 매번 이렇게 길게 작성해야한다. 그래서 훅을 만들어서 사용한다. =>
     return(
         <>
             {showLoading && <Loading />}
@@ -153,21 +171,31 @@ function Home () {
                             ))}
                         </ul>
                         {/* 틀렷을 경우는 alert으로 하고 정답일 경우 버튼을 추가해주자. */}
-                       <div>
-                           {(keyword1Key && keyword2Key) 
-                            ? (keyword1Key === correctAnswer.keyword1Key && keyword2Key === correctAnswer.keyword2Key
-                            ? tHome("quizBothRight")
-                            : keyword1Key === correctAnswer.keyword1Key ? tHome("quizNameRight")
-                            : keyword2Key === correctAnswer.keyword2Key ? tHome("quizAgeRight")
-                            : tHome("quizBothWrong"))
-                            : ""}
-                       </div>
-                       <div>
-                        {
-                            (keyword1Key === correctAnswer.keyword1Key && 
-                            keyword2Key === correctAnswer.keyword2Key) ? <button>눌러</button> :""
-                        }
-                       </div>
+                        <div className="hint_btn">
+                            <button className="common_btn reverse" onClick={() => addAlert(tHome("quiz.HintName"))}>
+                                {tHome("quiz.NameHint")}
+                            </button>
+                            <button className="common_btn reverse" onClick={() => addAlert(tHome("quiz.HintAge"))}>
+                                {tHome("quiz.NameHint")}
+                            </button>
+                        </div>
+                        <div className="answer">
+                            <div className="answer_text">
+                            {(keyword1Key && keyword2Key) 
+                                ? (keyword1Key === correctAnswer.keyword1Key && keyword2Key === correctAnswer.keyword2Key
+                                ? tHome("quiz.BothRight")
+                                : keyword1Key === correctAnswer.keyword1Key ? tHome("quiz.NameRight")
+                                : keyword2Key === correctAnswer.keyword2Key ? tHome("quiz.AgeRight")
+                                : tHome("quiz.BothWrong"))
+                                : ""}
+                            </div>
+                            <div className="answer_success">
+                                {
+                                    (keyword1Key === correctAnswer.keyword1Key && 
+                                    keyword2Key === correctAnswer.keyword2Key) ? <button>눌러</button> :""
+                                }
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -180,6 +208,15 @@ function Home () {
             {openModal === "modal2" && (
                 <ExplaninModal onClose={handleCloseModal} content={<HomeExplain2 />} />
             )}
+
+            {alerts.map(alert => (
+                <Alert
+                    key={alert.id}
+                    onClose={() => removeAlert(alert.id)}
+                    >
+                    {alert.message}
+                </Alert>
+            ))}
         </>
     )
 }

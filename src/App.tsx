@@ -30,14 +30,14 @@ function App() {
     return (
       <>
         <FixdBtnLayout top='15px' right='15px'>
-            <button className='lang_btn' onClick={toggleLanguage}>
-              {lang === "ko" ? "En" : "Ko"}
-            </button>
-        </FixdBtnLayout>
-        <FixdBtnLayout top='15px' left='15px'>
-            <button onClick={toggleTheme}>
-              {theme === "dark" ? <CiLight /> : <MdDarkMode />}
-            </button>
+            <div className='fixed_top_btn'>
+                <button onClick={toggleTheme}>
+                    {theme === "dark" ? <CiLight size={24} /> : <MdDarkMode size={24} />}
+                </button>
+                <button className='lang_btn' onClick={toggleLanguage}>
+                    {lang === "ko" ? "En" : "Ko"}
+                </button>
+            </div>
         </FixdBtnLayout>
         <Router/>
       </>
