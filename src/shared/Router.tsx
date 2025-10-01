@@ -41,10 +41,10 @@ const Router = () => {
         
             <Route element={<Layout />}>
                 {/* 영어 URL 그룹 */}
-                <Route path="/en/CountPage" element={<CountPage />} />
+                {/* <Route path="/en/CountPage" element={<CountPage />} />
                 <Route path="/en/TodoPage" element={<TodoPage />} />
                 <Route path="/en/Sub2" element={<Sub2 />} />
-                <Route path="/en/Counter" element={<Counter />} />
+                <Route path="/en/Counter" element={<Counter />} /> */}
 
                 {/* 한국어 URL 그룹 */}
                 <Route path="/CountPage" element={<CountPage />} />

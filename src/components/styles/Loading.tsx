@@ -16,8 +16,8 @@ function Loading(){
                     <h2>
                         <ReactTyped
                             strings={[tHome("loading.text_1"),tHome("loading.text_2"),tHome("loading.text_3")]}
-                            typeSpeed={80}
-                            backSpeed={80}
+                            typeSpeed={60}
+                            backSpeed={30}
                             // loop
                             showCursor={false}
                             onComplete={() => {

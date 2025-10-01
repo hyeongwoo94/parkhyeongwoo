@@ -1,14 +1,14 @@
-import ContantPage from "../components/styles/ContantPage"
+import ContentPage from "../components/styles/ContentPage"
 
 
 function CountPage () {
     return(
         <>
-        <ContantPage>
+        <ContentPage>
           <div className="">
             CountPage
           </div>
-        </ContantPage>
+        </ContentPage>
           
         </>
     )

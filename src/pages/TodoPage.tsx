@@ -1,9 +1,13 @@
+import ContentPage from "../components/styles/ContentPage"
+
 function TodoPage () {
     return(
         <>
-          <div>
-            CountPage
-          </div>
+          <ContentPage>
+            <div className="">
+              todopage
+            </div>
+          </ContentPage>
         </>
     )
 }

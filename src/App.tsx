@@ -40,7 +40,7 @@ export function LangBox() {
   }, [lang]);
 
     return(
-            <button className='lang_btn' onClick={toggleLanguage}>
+            <button onClick={toggleLanguage}>
                 {lang === "ko" ? "En" : "Ko"}
             </button>
     )

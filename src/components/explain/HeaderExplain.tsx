@@ -33,6 +33,7 @@ export const HeaderExplain = React.memo(function Btn() {
                 <CodeView language="tsx" 
                     code={`
 <ul className='header_menu_list'>
+{/* 언어변경이 있기때문에 목데이터에서 언어변경의 변수값이 나오도록 만들기 */}
     {headerMenu.map((menu, idx) => {
         const isActive = location.pathname.includes(menu.path); // ✅ 현재 URL 비교
         return (
@@ -41,17 +42,11 @@ export const HeaderExplain = React.memo(function Btn() {
             className={isActive ? "on" : ""}
             onClick={() => navigate(menu.path)}
         >
-            <p>{menu.title}</p>
+            <p>{tMenu(menu.title)}</p>
         </li>
         );
     })}
 </ul>
-//-----------------------------------------------------------------
-<div className='header_code_btn'  onClick={()=> setOpenModal(openModal =>!openModal)}>
-    <CodeViewBtn/>
-</div>
-   
-{openModal === true ? <ExplaninModal onClose={()=> setOpenModal(false)} content={<HeaderExplain />}></ExplaninModal> : ""}
                     `} 
                 />
             </div>

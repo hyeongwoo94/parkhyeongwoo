@@ -72,7 +72,7 @@
             >li{
                 cursor: pointer;
                 &.on{
-                    a{
+                    p{
                         &::before{
                             width: 100%;
                             transition: width 0.5s;
@@ -84,7 +84,7 @@
                     }
                 }
                 &:hover{
-                   a{
+                   p{
                         &::before{
                             width: 100%;
                             transition: width 0.5s;
@@ -95,7 +95,7 @@
                         }
                     }
                 }
-                a{
+                p{
                     @include var.main-title;
                     position: relative;
                     width: max-content;
