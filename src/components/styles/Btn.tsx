@@ -16,26 +16,7 @@ export const Btn = React.memo(function Btn({ children, onClick }: buttonProps) {
 });
 
 
-interface FixdBtnProps {
-  children: React.ReactNode;
-  top?: string;
-  right?: string;
-  bottom?: string;
-  left?: string;
-}
 
-const FixedDiv = styled.div<FixdBtnProps>`
-  position: fixed;
-  z-index: 99999;
-  top: ${({ top }) => top ?? "auto"};
-  right: ${({ right }) => right ?? "auto"};
-  bottom: ${({ bottom }) => bottom ?? "auto"};
-  left: ${({ left }) => left ?? "auto"};
-`;
-
-export const FixdBtnLayout = React.memo(function FixdBtn({ children, top, right,  bottom,  left}: FixdBtnProps) {
-  return <FixedDiv top={top} right={right} bottom={bottom} left={left}>{children}</FixedDiv>;
-});
 
 interface ModalBtnProps {
     children: ReactNode; // ReactNode 타입으로 children 지정

@@ -1,64 +1,4 @@
-:root{
-    --main-bg:#fff;
-    --main-color: #374151;
-    --main-border: #374151;
-    --main-color-text:#374151;
-    --main-menu-bg:#f1f1f1;
-    // 기본 버튼
-    --main-btn-bg:#fff;
-    --main-btn-border:#374151;
-    --main-btn-text:#374151;
-    // svg 색상
-    --stroke-color: #0F1B2A;
-    //코드리뷰 버튼 색상
-    --codeBtn-bg1:#fff;
-    --codeBtn-bg2:#374151;
-    --codeBtn-bg3:#445d85;
-    //alert 색상
-    --alert-text:#fff;
-    --alert-bg:#374151;
-    --alert-shadow:rgb(38, 57, 77) 0px 2px 4px 0px, rgb(38, 57, 77) 0px 2px 16px 0px;
-}
-[data-theme="dark"] {
-    --main-bg:#374151;
-    --main-color: #3B82F6;
-    --main-border: #3B82F6;
-    --main-color-text:#F3F4F6;
-     --main-menu-bg:#4f5c72;
-    // 기본버튼
-    --main-btn-bg:#374151;
-    --main-btn-border:#3B82F6;
-    --main-btn-text:#3B82F6;
-     // svg 색상
-    --stroke-color: #F3F4F6;
-    //코드리뷰 버튼 색상
-    --codeBtn-bg1:#374151;
-    --codeBtn-bg2:#3B82F6;
-    --codeBtn-bg3:rgb(87, 135, 212);
-    //alert 색상
-    --alert-text:#fff;
-    --alert-bg:#3B82F6;
-    --alert-shadow:rgb(105, 159, 218)0px 2px 4px 0px, rgb(105, 159, 218) 0px 2px 16px 0px;;
-}
-
-@mixin main-title($font-size:24px, $font-weight:700, $line-height:1) {
-    font-size: $font-size;
-    font-weight: $font-weight;
-    line-height: $line-height;
-    @media (max-width:768px) {
-        font-size: 18px;
-        font-weight: 700;
-    }
-}
-@mixin main-text ($font-size:18px, $font-weight:400, $line-height:1){
-    font-size: $font-size;
-    font-weight:$font-weight;
-    line-height: $line-height;
-    @media (max-width:768px) {
-        font-size: 12px;
-        font-weight: 400;
-    }
-}
+@use './var'as var;
 //z-index 관리
 // 모달,로딩 999 헤더 99  나머지 9
 // 컨텐츠 라인
@@ -68,6 +8,20 @@
     margin: 0 auto;
     @media (max-width:1280px) {
         width: 95%;
+    }
+}
+.fixed_btn_layout{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 99;
+    @media (max-width:1280px) {
+        bottom: 10px;
+        right: 10px; 
+        gap: 5px; 
     }
 }
 //--------------------------------------------------------------------------------------컴포
@@ -114,7 +68,7 @@
         align-items: center;
     }
 }
-
+//alert
 .alert{
     position: fixed;
     top: 40px;
@@ -125,32 +79,10 @@
     border-radius: 10px;
     color: var(--alert-text);
     background-color: var(--alert-bg);
-    @include main-text;
+    @include var.main-text;
     box-shadow: var(--alert-shadow);
 }
-
-.common_btn{
-    border: solid 1px var(--main-btn-border);
-    color: var(--main-btn-text);
-    background-color: var(--main-btn-bg);
-    padding: 5px 10px;
-    border-radius: 5px;
-    @include main-text($line-height:1);
-    cursor: pointer;
-    &:hover {
-        background-color: var(--main-btn-border);
-        color: var(--main-btn-bg);
-    }
-    &.reverse{
-        border: solid 1px  var(--main-btn-text);
-        color: var(--main-btn-bg);
-        background-color: var(--main-btn-text);
-            &:hover {
-        background-color: var(--main-btn-bg);
-        color: var(--main-btn-border);
-    }
-    }
-}
+//로딩
 .loading{
     background-color: transparent;
     &_top{
@@ -167,7 +99,7 @@
         transform: translateY(0); // 기본 닫힘
         z-index: 999;
         h2{
-            @include main-title($line-height:1.5)
+            @include var.main-title($line-height:1.5)
         }
     }
     &_bottom{
@@ -192,6 +124,29 @@
   }
 }
 
+//공통 컴포넌트
+.common_btn{
+    border: solid 1px var(--main-btn-border);
+    color: var(--main-btn-text);
+    background-color: var(--main-btn-bg);
+    padding: 5px 10px;
+    border-radius: 5px;
+    @include var.main-text($line-height:1);
+    cursor: pointer;
+    &:hover {
+        background-color: var(--main-btn-border);
+        color: var(--main-btn-bg);
+    }
+    &.reverse{
+        border: solid 1px  var(--main-btn-text);
+        color: var(--main-btn-bg);
+        background-color: var(--main-btn-text);
+            &:hover {
+        background-color: var(--main-btn-bg);
+        color: var(--main-btn-border);
+    }
+    }
+}
 // 코드 보여주기 view
 .code_view{
     user-select: none;
@@ -243,143 +198,6 @@
         opacity: 0;
     }
 }
-
 //--------------------------------------------------------------------------------------컴포
 //--------------------------------------------------------------------------------------header
 
-.header{
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 99;
-    background-color: var(--main-bg);
-    border-bottom: solid 1px var(--main-border);
-    padding: 20px 0;
-    box-sizing: border-box;
-     @media (max-width:1280px) {
-        padding: 10px 0;
-    }
-    &_layout{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-    &_btn{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
-        &.open{
-            .header_btn_item{
-                transition: all 0.4s;
-                &._1{width:30px;}
-                &._2{width: 100%;}
-                &._3{width: 100%;}
-            }
-        }
-    }  
-    &_btn_item{
-        transition: all 0.4s;
-        width: 30px;
-        height: 4px;
-        border-radius: 20px;
-        background-color: var(--main-color);
-        &._1{width:30px;}
-        &._2{width: 70%;}
-        &._3{width: 40%;}
-    }
-    &_menu{
-        position: fixed;
-        z-index: 9;
-        right: 0;
-        top: 63px;
-        transform: translateY(-110%);
-        height: calc(100dvh - 63px);
-        background-color: var(--main-menu-bg);
-        border-left: solid 1px var(--main-border);
-        max-width: 600px;
-        width: 100%;
-        padding: 20px;
-        box-sizing: border-box;
-        transition: all 0.3s;
-        &.open{
-            transform: translateY(0%);
-            transition: all 0.5s;
-        }
-        @media (max-width:1280px) {
-            max-width: 300px;
-            padding: 10px;
-            top: 43px;
-             height: calc(100dvh - 43px);
-        }
-        &_list{
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            >li{
-                cursor: pointer;
-                &.on{
-                    p{
-                        &::before{
-                            width: 100%;
-                            transition: width 0.5s;
-                        }
-                        &::after{
-                            display: block;
-                            transition: width 0.5s;
-                        }
-                    }
-                }
-                &:hover{
-                   p{
-                        &::before{
-                            width: 100%;
-                            transition: width 0.5s;
-                        }
-                        &::after{
-                            display: block;
-                            transition: width 0.5s;
-                        }
-                    }
-                }
-                p{
-                    padding: 10px 0;
-                    @include main-title;
-                    position: relative;
-                    width: max-content;
-                    &::before{
-                        content: "";
-                        position: absolute;
-                        bottom: 0;
-                        left: 0;
-                        width: 0%;
-                        transition: width 0.5s;
-                        display: block;
-                        height: 2px;
-                        background-color: var(--main-border);  
-                    }
-                    &::after{
-                        content: "";
-                        position: absolute;
-                        top: 5px;
-                        right: -10px;
-                        width: 5px;
-                        height: 5px;
-                        border-radius: 100%;
-                        transition: width 0.5s;
-                        display: none;
-                        background-color: var(--main-border);  
-                    }
-                    
-                }
-            }
-        }
-    }
-}
-.header_code_btn{
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-}

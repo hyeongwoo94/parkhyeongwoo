@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo  } from "react";
 import ExplaninModal from '../components/ExplaninModal';
 import {HomeExplain, HomeExplain2} from "../components/explain/HomeExplain"; // 모달의 내용들
-import { FixdBtnLayout, ModalBtn } from "../components/styles/Btn"; // 스타일 컴포넌트 가져오기
+import { ModalBtn } from "../components/styles/Btn"; // 스타일 컴포넌트 가져오기
 import { useTranslation } from 'react-i18next'; // 언어변경
 import Loading from "../components/styles/Loading";
 import { CodeViewBtn } from "../assets/svg/SvgCode";
@@ -142,11 +142,11 @@ function Home () {
             <section className='home'>
                 <div className='home_wrap'>
                     <div className="home_w">
-                         <FixdBtnLayout bottom="50px" right="15px">
+                        <div className="home_fixed_btn">
                             <ModalBtn modalName="modal1" onClick={handleOpenModal}>
                                <CodeViewBtn />
                             </ModalBtn>
-                        </FixdBtnLayout>
+                        </div>
                         <ModalBtn modalName="modal2" onClick={handleOpenModal}>
                             <CodeViewBtn />
                         </ModalBtn>

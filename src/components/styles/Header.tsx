@@ -1,12 +1,13 @@
 import  React from 'react';
 import styled from 'styled-components';
 import { useState } from "react"
-import { useNavigate, useLocation } from "react-router-dom";
-import { headerMenu } from '../../redux/config/MockData';
+// import { useNavigate, useLocation } from "react-router-dom";
+// import { headerMenu } from '../../redux/config/MockData';
 import { CodeViewBtn } from '../../assets/svg/SvgCode';
 import ExplaninModal from '../ExplaninModal';
 import { HeaderExplain } from '../explain/HeaderExplain';
 import { useTranslation } from 'react-i18next'; // 언어변경
+import { Link } from 'react-router-dom';
 
 const HeaderStyle = styled.div`
 `;
@@ -14,10 +15,10 @@ const HeaderStyle = styled.div`
 
 function Header() {
     const [open,setOpen] = useState(false);
-    const location = useLocation();
-    const navigate = useNavigate();
+    // const location = useLocation();
+    // const navigate = useNavigate();
     const [openModal,setOpenModal] = useState(false);
-     const { t: tMenu } = useTranslation("headerMenu"); // home 안의 것들만 가져오기
+    const { t: tMenu } = useTranslation("headerMenu"); // home 안의 것들만 가져오기
     return (
         <>
             <HeaderStyle className="header">
@@ -34,7 +35,7 @@ function Header() {
             </HeaderStyle>
             <div className={`header_menu ${open ? "open" : ""}`} >
                 <ul className='header_menu_list'>
-                    {headerMenu.map((menu, idx) => {
+                    {/* {headerMenu.map((menu, idx) => {
                         const isActive = location.pathname.includes(menu.path); // ✅ 현재 URL 비교
                         return (
                         <li
@@ -45,7 +46,19 @@ function Header() {
                             <p>{tMenu(menu.title)}</p>
                         </li>
                         );
-                    })}
+                    })} */}
+                    <li>
+                        <Link to="/CountPage">{tMenu('coute')}</Link>
+                    </li>
+                    <li>
+                        <Link to="/TodoPage">{tMenu('todo')}</Link>
+                    </li>
+                    <li>
+                        <Link to="/">{tMenu('weather')}</Link>
+                    </li>
+                    <li>
+                        <Link to="/">{tMenu('shop')}</Link>
+                    </li>
                 </ul>
                 <div className='header_code_btn'  onClick={()=> setOpenModal(openModal =>!openModal)}>
                     <CodeViewBtn/>

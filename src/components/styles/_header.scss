@@ -1,0 +1,137 @@
+@use '../../var'as var;
+.header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    background-color: var(--main-bg);
+    border-bottom: solid 1px var(--main-border);
+    padding: 20px 0;
+    box-sizing: border-box;
+     @media (max-width:1280px) {
+        padding: 10px 0;
+    }
+    &_layout{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &_btn{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        &.open{
+            .header_btn_item{
+                transition: all 0.4s;
+                &._1{width:30px;}
+                &._2{width: 100%;}
+                &._3{width: 100%;}
+            }
+        }
+    }  
+    &_btn_item{
+        transition: all 0.4s;
+        width: 30px;
+        height: 4px;
+        border-radius: 20px;
+        background-color: var(--main-color);
+        &._1{width:30px;}
+        &._2{width: 70%;}
+        &._3{width: 40%;}
+    }
+    &_menu{
+        position: fixed;
+        z-index: 9;
+        right: 0;
+        top: 63px;
+        transform: translateY(-110%);
+        height: calc(100dvh - 63px);
+        background-color: var(--main-menu-bg);
+        border-left: solid 1px var(--main-border);
+        max-width: 600px;
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        transition: all 0.3s;
+        &.open{
+            transform: translateY(0%);
+            transition: all 0.5s;
+        }
+        @media (max-width:1280px) {
+            max-width: 300px;
+            padding: 10px;
+            top: 43px;
+             height: calc(100dvh - 43px);
+        }
+        &_list{
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            >li{
+                cursor: pointer;
+                &.on{
+                    p{
+                        &::before{
+                            width: 100%;
+                            transition: width 0.5s;
+                        }
+                        &::after{
+                            display: block;
+                            transition: width 0.5s;
+                        }
+                    }
+                }
+                &:hover{
+                   p{
+                        &::before{
+                            width: 100%;
+                            transition: width 0.5s;
+                        }
+                        &::after{
+                            display: block;
+                            transition: width 0.5s;
+                        }
+                    }
+                }
+                p{
+                    padding: 10px 0;
+                    @include var.main-title;
+                    position: relative;
+                    width: max-content;
+                    &::before{
+                        content: "";
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 0%;
+                        transition: width 0.5s;
+                        display: block;
+                        height: 2px;
+                        background-color: var(--main-border);  
+                    }
+                    &::after{
+                        content: "";
+                        position: absolute;
+                        top: 5px;
+                        right: -10px;
+                        width: 5px;
+                        height: 5px;
+                        border-radius: 100%;
+                        transition: width 0.5s;
+                        display: none;
+                        background-color: var(--main-border);  
+                    }
+                    
+                }
+            }
+        }
+    }
+}
+.header_code_btn{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}

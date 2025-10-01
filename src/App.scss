@@ -1,21 +1,10 @@
-@use './common' as var;
+@use './var' as var;
+@use './common';
 
+@use './components/styles/header';
 //page
 @use './pages/home';
 
 //components
 @use './components/explain/explain';
-
-
-.lang_btn{
-    @include var.main-text;
-}
-.fixed_top_btn{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    svg{
-
-    }
-}
 
