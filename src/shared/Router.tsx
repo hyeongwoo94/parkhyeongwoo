@@ -16,11 +16,19 @@ const Router = () => {
 
     // ✅ URL이 /en으로 시작하면 영어, 아니면 한국어
     useEffect(() => {
-        if (location.pathname.startsWith("/en")) {
+    const savedLang = localStorage.getItem("lang") as "ko" | "en" | null;
+
+    if (location.pathname.startsWith("/en")) {
         i18n.changeLanguage("en");
-        } else {
+        localStorage.setItem("lang", "en");
+    } else if (savedLang) {
+        // ✅ URL이 /en이 아니더라도 기존 lang 값 유지
+        i18n.changeLanguage(savedLang);
+    } else {
+        // 기본값 ko
         i18n.changeLanguage("ko");
-        }
+        localStorage.setItem("lang", "ko");
+    }
     }, [location.pathname, i18n]);
   return (
         <>

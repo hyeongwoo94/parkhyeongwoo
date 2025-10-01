@@ -1,4 +1,15 @@
 @use './var'as var;
+
+body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: var(--main-bg);
+    color: var(--main-color-text);
+    @include var.main-text();
+}
+a{
+    color: var(--main-color-text);
+}
+
 //z-index 관리
 // 모달,로딩 999 헤더 99  나머지 9
 // 컨텐츠 라인

@@ -18,7 +18,7 @@ function Header() {
     // const location = useLocation();
     // const navigate = useNavigate();
     const [openModal,setOpenModal] = useState(false);
-    const { t: tMenu } = useTranslation("headerMenu"); // home 안의 것들만 가져오기
+    const { t: tMenu } = useTranslation("headerMenu"); // headerMenu 안의 것들만 가져오기
     return (
         <>
             <HeaderStyle className="header">
@@ -48,7 +48,7 @@ function Header() {
                         );
                     })} */}
                     <li>
-                        <Link to="/CountPage">{tMenu('coute')}</Link>
+                        <Link to="/CountPage">{tMenu('count')}</Link>
                     </li>
                     <li>
                         <Link to="/TodoPage">{tMenu('todo')}</Link>

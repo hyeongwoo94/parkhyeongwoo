@@ -24,26 +24,45 @@ export const HomeExplain = React.memo(function Btn() {
                 </div>
                 <CodeView language="tsx" 
                     code={`
-const { i18n } = useTranslation();
-const [lang, setLang] = useState("ko");
-const [theme, setTheme] = useState<"light" | "dark">("light");
+export function ThemaBox(){
+    const [theme, setTheme] = useState<"light" | "dark">("light");
+    const toggleTheme = () => {
+      setTheme(prev => (prev === "light" ? "dark" : "light"));
+    };
+    useEffect(() => {
+      document.body.setAttribute("data-theme", theme); // body에 data-theme 적용
+    }, [theme]);
+    return(
+        <button onClick={toggleTheme}>
+            {theme === "dark" ? <CiLight size={24} /> : <MdDarkMode size={24} />}
+        </button>
+    )
+}
+//로컬스토리지로 언어변경 제어
+export function LangBox() {
+  const { i18n } = useTranslation();
+  const [lang, setLang] = useState<"ko" | "en">(
+    (localStorage.getItem("lang") as "ko" | "en") || "ko"
+  );
 
-const toggleLanguage = () => {
-const newLang = lang === "ko" ? "en" : "ko"; // 현재 언어 반대
+  const toggleLanguage = () => {
+    const newLang = lang === "ko" ? "en" : "ko"; // 현재 언어 반대
     i18n.changeLanguage(newLang);
     setLang(newLang);
-};
+    localStorage.setItem("lang", newLang); // ✅ 로컬스토리지에 저장
+  };
 
-useEffect(() => {
+  useEffect(() => {
     document.body.setAttribute("data-lang", lang);
-}, [lang]);
+  }, [lang]);
 
-const toggleTheme = () => {
-    setTheme(prev => (prev === "light" ? "dark" : "light"));
-};
-useEffect(() => {
-    document.body.setAttribute("data-theme", theme); // body에 data-theme 적용
-}, [theme]);
+    return(
+            <button className='lang_btn' onClick={toggleLanguage}>
+                {lang === "ko" ? "En" : "Ko"}
+            </button>
+    )
+}
+
                     
                     `} 
                 />

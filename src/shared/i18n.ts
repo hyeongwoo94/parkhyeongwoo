@@ -9,14 +9,11 @@ i18n
   .use(initReactI18next)
   .init({
     resources: { en, ko },
+    lng: localStorage.getItem("lang") || "ko",
     fallbackLng: "ko", // 기본 언어
     interpolation: {
       escapeValue: false,
     },
-    detection: {
-      order: ["localStorage"],
-      caches: ["localStorage"], // ✅ localStorage에 저장
-    }
   });
 
 export default i18n;
