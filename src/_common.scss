@@ -9,7 +9,18 @@ body{
 a{
     color: var(--main-color-text);
 }
-
+.pc{
+    display: block;
+    @media (max-width:1080px) {
+        display: none;
+    }
+}
+.mo{
+    display: none;
+    @media (max-width:1080px) {
+        display: block;
+    }
+}
 //z-index 관리
 // 모달,로딩 999 헤더 99  나머지 9
 // 컨텐츠 라인
@@ -178,7 +189,6 @@ a{
     justify-content: center;
     align-items: center;
     position: relative;
-       
     &_1{
         width: 20px;
         height: 20px;
@@ -196,7 +206,18 @@ a{
          border-radius: 100%;
         background-color: var(--codeBtn-bg3);
         animation: ripple 1s ease-out infinite;
-      
+    }
+    @media (max-width:768px) {
+        width: 18px;
+        height: 18px;
+        &_1{
+            width: 14px;
+            height: 14px;
+        }
+        &_2{
+            width: 10px;
+            height: 10px;
+        }
     }
 }
 @keyframes ripple {

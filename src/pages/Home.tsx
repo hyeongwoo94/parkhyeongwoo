@@ -87,9 +87,12 @@ function Home () {
 
     //드래그 한 데이터를 넣을 코드의 값
     const handleDrop = (
-        e: React.DragEvent<HTMLDivElement>,
-        setter: (val: string) => void
+    e: React.DragEvent<HTMLDivElement>,
+    setter: (val: string) => void
     ) => {
+        e.preventDefault();   // ✅ 꼭 필요
+        e.stopPropagation();  // ✅ 모바일에서 필요할 수 있음 모바일에서 검색되는 오류 방지
+
         const key = e.dataTransfer.getData("text/plain");
         if (!itemsKeys.includes(key)) return;
         setter(key);
@@ -203,7 +206,11 @@ function Home () {
                 </div>
             </section>
 
-
+            {/* <section className="home mo">
+                <div className="home_wrap">
+                    <div className="home_w"></div>
+                </div>
+            </section> */}
             {/* 모달영역 */}
             {openModal === "modal1" && (
                 <ExplaninModal onClose={handleCloseModal} content={<HomeExplain />} />
