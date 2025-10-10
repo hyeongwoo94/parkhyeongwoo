@@ -1,16 +1,17 @@
 import  React from 'react';
-import styled from 'styled-components';
 
 
-const FooterStyles = styled.div`
-
-`;
 
 function Footer() {
+    const year = new Date().getFullYear();
   return (
-    <FooterStyles>
-      <span>copyright @SCC</span>
-    </FooterStyles>
+    <footer>
+        <div className="main_cont_w">
+            <h3>
+                © {year} ParkHyeongWoo. All rights reserved.
+            </h3>
+        </div>
+    </footer>
   );
 }
 

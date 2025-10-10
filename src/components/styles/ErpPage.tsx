@@ -7,7 +7,6 @@ interface ConstantPageProps{
 
 const ContantPageStyles = styled.div`
     margin-top: 63px;
-    padding: 30px 0;
     box-sizing: border-box;
     height: calc(100dvh - (63px + 59px));
     overflow-y: auto;
@@ -18,15 +17,13 @@ const ContantPageStyles = styled.div`
     }
 `;
 
-function ContantPage({children}:ConstantPageProps) {
+function ErpPage({children}:ConstantPageProps) {
   return (
     <ContantPageStyles>
-        <div className="main_cont_w">
-            {children}
-        </div>
+        {children}
     </ContantPageStyles>
   );
 }
 
 
-export default React.memo(ContantPage)
+export default React.memo(ErpPage)

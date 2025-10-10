@@ -6,7 +6,8 @@ export const en = {
         count: "Count",
         todo: "Todo",
         weather: "Weather",
-        shop: "Shop"
+        shop: "Shop",
+        ERP: "ERP"
     },
     home: {
         say:{

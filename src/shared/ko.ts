@@ -6,7 +6,8 @@ export const ko = {
         count: "카운트",
         todo: "투두",
         weather: "날씨",
-        shop: "장바구니"
+        shop: "장바구니",
+        ERP: "ERP"
     },
     home: {
         say:{
@@ -23,7 +24,7 @@ export const ko = {
         BothRight:'저의 대한 관심이 많으시군요. 저를 더욱 알고 싶으신가요?',
         NameRight:'제 이름은 맞혔네요! 나이 힌트를 누르세요. ',
         AgeRight:'제 나이는 맞혔네요! 이름 힌트를 누르세요.',
-        BothWrong:'하! 어떻게 이곳에 들어오셨죠?',
+        BothWrong:'글을 제대로 다시 읽어보시겠어요?',
         HintName:'저는 박씨 입니다',
         HintAge:'저는 1994년생입니다',
         NameHint:"이름힌트",

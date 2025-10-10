@@ -12,10 +12,13 @@ export const CloseSvg = React.memo(function CloseSvg() {
   ) 
 });
 
-export const CodeViewBtn = React.memo(function CodeViewBtn() {
+interface CodeViewBtnProps {
+  onClick?: () => void; // 클릭 이벤트를 부모로부터 받을 수 있도록
+}
+export const CodeViewBtn = React.memo(function CodeViewBtn({ onClick }: CodeViewBtnProps) {
   return(
     <>
-        <div className='code_view_btn'>
+        <div className='code_view_btn' onClick={onClick}>
             <div className='code_view_btn_1'>
                 <div className='code_view_btn_2'></div>
             </div>

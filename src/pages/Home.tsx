@@ -181,7 +181,7 @@ function Home () {
                                 {tHome("quiz.NameHint")}
                             </button>
                             <button className="common_btn reverse" onClick={() => addAlert(tHome("quiz.HintAge"))}>
-                                {tHome("quiz.NameHint")}
+                                {tHome("quiz.AgeHint")}
                             </button>
                         </div>
                         <div className="answer">

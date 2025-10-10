@@ -21,6 +21,11 @@ a{
         display: block;
     }
 }
+.flex-center-gap-10{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 //z-index 관리
 // 모달,로딩 999 헤더 99  나머지 9
 // 컨텐츠 라인
@@ -49,6 +54,12 @@ a{
         font-size: 20px;
         font-weight: bold;
     }
+}
+footer{
+    padding: 20px 0;
+    box-sizing: border-box;
+    border-top: solid 1px var(--main-color);
+    box-sizing: border-box;
 }
 //--------------------------------------------------------------------------------------컴포
 // 모달 기본값
@@ -189,6 +200,7 @@ a{
     justify-content: center;
     align-items: center;
     position: relative;
+    cursor: pointer;
     &_1{
         width: 20px;
         height: 20px;
@@ -236,4 +248,34 @@ a{
 }
 //--------------------------------------------------------------------------------------컴포
 //--------------------------------------------------------------------------------------header
-
+.page_top{
+    position: relative;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+    &_btn{
+        position: absolute;
+        top: -15px;
+        right: 0;
+    }
+    h4{
+        @include var.main-title
+    }
+}
+.practice{
+    &_flex{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    display: flex;
+    flex-direction: column;
+    border-bottom: solid 1px var(--main-color);
+    &_item{
+        border-bottom: solid 1px var(--main-color);
+        padding: 10px 0;
+        box-sizing: border-box;
+        &:last-child{
+            border: none;
+        }
+    }
+}

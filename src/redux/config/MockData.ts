@@ -17,6 +17,7 @@ export const headerMenu = [
  {title:"todo", path:"/TodoPage"},
  {title:"weather", path:"/WeatherPage"},
  {title:"shop", path:"/ShopPage"},
+ {title:"ERP", path:"/erp/ErpHome"},
 ];
 export const headerMenuList = [
   "useState",

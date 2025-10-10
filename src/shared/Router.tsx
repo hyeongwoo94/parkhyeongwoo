@@ -7,6 +7,7 @@ import Layout from "../components/styles/Layout";
 import Counter from "../components/Counter";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import ErpHome from "../pages/erp/ErpHome";
 
 // 라우터 정의
 const Router = () => {
@@ -51,6 +52,7 @@ const Router = () => {
                 <Route path="/TodoPage" element={<TodoPage />} />
                 <Route path="/Sub2" element={<Sub2 />} />
                 <Route path="/Counter" element={<Counter />} />
+                <Route path="/erp/ErpHome" element={<ErpHome />} />
             </Route>
             
         </Routes>

@@ -46,6 +46,9 @@ function Header() {
                         </li>
                         );
                     })}
+                    <li>
+                        <a target='_blank' href="https://hyeongwoo94.github.io/parkhyeongwoo_vue/"><p>Vue</p></a>
+                    </li>
                 </ul>
                 <div className='header_code_btn'  onClick={()=> setOpenModal(openModal =>!openModal)}>
                     <CodeViewBtn/>
