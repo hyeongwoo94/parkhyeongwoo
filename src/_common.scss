@@ -170,19 +170,23 @@ footer{
     border-radius: 5px;
     @include var.main-text($line-height:1);
     cursor: pointer;
-    &:hover {
-        background-color: var(--main-btn-border);
-        color: var(--main-btn-bg);
-    }
-    &.reverse{
-        border: solid 1px  var(--main-btn-text);
-        color: var(--main-btn-bg);
-        background-color: var(--main-btn-text);
-            &:hover {
-        background-color: var(--main-btn-bg);
-        color: var(--main-btn-border);
-    }
-    }
+        &:hover {
+            background-color: var(--main-btn-border);
+            color: var(--main-btn-bg);
+        }
+        &.reverse{
+            border: solid 1px  var(--main-btn-text);
+            color: var(--main-btn-bg);
+            background-color: var(--main-btn-text);
+                &:hover {
+                background-color: var(--main-btn-bg);
+                color: var(--main-btn-border);
+            }
+        }
+        &.on{
+            color: var( --main-btn-bg);
+            background-color: var(--main-btn-text);
+        }
 }
 // 코드 보여주기 view
 .code_view{
