@@ -3,7 +3,7 @@ export const ko = {
         code_review: "코드리뷰",
     },
     headerMenu:{
-        count: "카운트",
+        count: "useState",
         todo: "투두",
         weather: "날씨",
         shop: "장바구니",

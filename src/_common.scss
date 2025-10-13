@@ -271,15 +271,29 @@ footer{
         align-items: center;
         justify-content: space-between;
     }
+    &_flex_col{
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+    }
     display: flex;
     flex-direction: column;
     border-bottom: solid 1px var(--main-color);
+    &_title{
+        @include var.main-title($font-size:20px);
+    }
     &_item{
         border-bottom: solid 1px var(--main-color);
         padding: 10px 0;
         box-sizing: border-box;
         &:last-child{
             border: none;
+        }
+    }
+    &_design{
+        h3{}
+        p{
+            @include var.main-text($line-height:1.3);
         }
     }
 }

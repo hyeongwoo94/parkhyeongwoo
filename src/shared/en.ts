@@ -3,7 +3,7 @@ export const en = {
         code_review: "Code view",
     },
     headerMenu:{
-        count: "Count",
+        count: "useState",
         todo: "Todo",
         weather: "Weather",
         shop: "Shop",
