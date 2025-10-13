@@ -154,6 +154,33 @@ export function Count4(){
     </>
   )
 }
+export function Count5(){
+	const subjects: string[] = ["사과", "배", "포도"];
+	const list = subjects.map((subject, index) => (
+		<div key={index}>{subject}</div>
+	));
+	return(
+    <>
+		<div className="practice_flex_col">
+			<div className="flex-center-gap-10">
+				<h2 className="practice_title">
+					4. map로 뿌려주고 추가해서 리렌더링하기
+				</h2>
+				
+			</div>
+			<div className="practice_flex">
+				<div className="flex-center-gap-10">
+					{list}
+				</div>
+				<div className="flex-center-gap-10">
+					<input type="text"  placeholder="과일추가하기"/>
+					<button className="common_btn">추가</button>
+				</div>
+			</div>
+		</div>
+    </>
+  )
+}
 function CountPage () {
     const { open, toggleModal, closeModal } = useModal();
     return(
@@ -179,6 +206,9 @@ function CountPage () {
 				</li>
 				<li className="practice_item">
             		<Count4/>
+				</li>
+				<li className="practice_item">
+            		<Count5/>
 				</li>
 			</ul>
             {open && (<ExplaninModal onClose={closeModal} content={<CounterExplain />} />)}
