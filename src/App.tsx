@@ -7,19 +7,31 @@ import { useTranslation } from "react-i18next";
 import { MdDarkMode } from "react-icons/md";
 import { CiLight } from "react-icons/ci";
 
-export function ThemaBox(){
-    const [theme, setTheme] = useState<"light" | "dark">("light");
-    const toggleTheme = () => {
-      setTheme(prev => (prev === "light" ? "dark" : "light"));
-    };
-    useEffect(() => {
-      document.body.setAttribute("data-theme", theme); // body에 data-theme 적용
-    }, [theme]);
-    return(
-        <button onClick={toggleTheme}>
-            {theme === "dark" ? <CiLight size={24} /> : <MdDarkMode size={24} />}
-        </button>
-    )
+export function ThemaBox() {
+  const [theme, setTheme] = useState<"light" | "dark">(() => {
+    // 초기 렌더링 시 localStorage에서 값 불러오기
+    const savedTheme = localStorage.getItem("theme");
+    return savedTheme === "dark" ? "dark" : "light";
+  });
+
+  const toggleTheme = () => {
+    setTheme((prev) => {
+      const newTheme = prev === "light" ? "dark" : "light";
+      localStorage.setItem("theme", newTheme); // 테마 변경 시 저장
+      return newTheme;
+    });
+  };
+
+  useEffect(() => {
+    // body에 data-theme 적용
+    document.body.setAttribute("data-theme", theme);
+  }, [theme]);
+
+  return (
+    <button onClick={toggleTheme}>
+      {theme === "dark" ? <CiLight size={24} /> : <MdDarkMode size={24} />}
+    </button>
+  );
 }
 
 export function LangBox() {

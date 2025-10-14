@@ -60,6 +60,9 @@
             &.dragging{
                 background-color: var(--point-color);  /* 배경 밝게 */    
                 color: #fff;
+                border-radius: 5px;
+                box-sizing: border-box;
+                border: none;
             }
 
         }
