@@ -14,6 +14,7 @@ export const en = {
             text_1:'Hellow My name is',
             text_2:'',
             text_3:'My age is',
+            mo_text:"Please touch and hold the box for 1 second, then drag it."
         },
         loading:{
             text_1:'Crack the code',

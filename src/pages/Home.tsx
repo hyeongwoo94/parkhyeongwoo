@@ -153,6 +153,9 @@ function Home () {
                         <ModalBtn modalName="modal2" onClick={handleOpenModal}>
                             <CodeViewBtn />
                         </ModalBtn>
+                        <h4 className="mo mo_home_notice_text">
+                            {tHome("say.mo_text")}
+                        </h4>
                         <div className='home_title_box'>
 
                             <div onDrop={(e) => handleDrop(e, setKeyword1Key)} onDragOver={handleDragOver}>
