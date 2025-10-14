@@ -280,7 +280,7 @@ footer{
     flex-direction: column;
     border-bottom: solid 1px var(--main-color);
     &_title{
-        @include var.main-title($font-size:20px);
+        @include var.main-title($font-size:20px, $mobile-font-size:16px);
     }
     &_item{
         border-bottom: solid 1px var(--main-color);

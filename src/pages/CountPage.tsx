@@ -155,9 +155,37 @@ export function Count4(){
   )
 }
 export function Count5(){
-	const subjects: string[] = ["사과", "배", "포도"];
+	// 1️⃣ 리스트 상태
+	const [subjects, setSubjects] = useState<string[]>(["사과", "배", "포도"]);
+
+	// 2️⃣ 인풋 입력 상태
+	const [inputValue, setInputValue] = useState<string>("");
+
+	// 3️⃣ 인풋 변경 핸들러
+	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setInputValue(e.target.value);
+	};
+
+	// 4️⃣ 추가 버튼 클릭 시 실행
+	const handleAddSubject = () => {
+		if (inputValue.trim() === "") return; // 빈 값이면 추가하지 않음
+		setSubjects([...subjects, inputValue]); // 새로운 과일 추가
+		setInputValue(""); // 입력창 초기화
+	};
+	// 🔥 엔터키 입력 시 추가 실행
+	const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+		if (e.key === "Enter") {
+		handleAddSubject();
+		}
+	};
+	// 🔥 더블클릭으로 삭제
+	const handleRemove = (index: number) => {
+		setSubjects(subjects.filter((_, i) => i !== index));
+	};
+
+	// 5️⃣ map으로 리스트 렌더링
 	const list = subjects.map((subject, index) => (
-		<div key={index}>{subject}</div>
+		<div key={index} onDoubleClick={() => handleRemove(index)}>{subject}</div>
 	));
 	return(
     <>
@@ -173,8 +201,8 @@ export function Count5(){
 					{list}
 				</div>
 				<div className="flex-center-gap-10">
-					<input type="text"  placeholder="과일추가하기"/>
-					<button className="common_btn">추가</button>
+					<input type="text"  placeholder="과일추가하기"  value={inputValue}  onChange={handleInputChange} onKeyDown={handleKeyDown}/>
+					<button className="common_btn" onClick={handleAddSubject}>추가</button>
 				</div>
 			</div>
 		</div>
