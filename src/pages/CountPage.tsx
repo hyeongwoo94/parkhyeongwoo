@@ -51,10 +51,7 @@ export function Count2(){
     </>
   )
 }
-export function Count3(){
-	const [active,setActive] = useState<string>('긴급');
-
-	const SpanState = styled.span<{$type: string; $active: boolean}>`
+const SpanState = styled.span<{$type: string; $active: boolean}>`
 		font-size: 12px;
 		border: solid 1px #333;
 		border-radius: 10px;
@@ -78,6 +75,8 @@ export function Count3(){
 				`;
 			}}
 	`;
+export function Count3(){
+	const [active,setActive] = useState<string>('긴급');
 	return(
     <>
 		<div className="practice_flex">
@@ -86,8 +85,8 @@ export function Count3(){
 					3. useState로 공지사항 분류
 				</h2>
 				<div className="flex-center-gap-10">
-					{["긴급", "중요", "일반"].map((type) => (
-						<button>
+					{["긴급", "중요", "일반"].map((type, index) => (
+						<button key={index}>
 							<SpanState
 								key={type}
 								$type={type}
@@ -109,10 +108,7 @@ export function Count3(){
     </>
   )
 }
-export function Count4(){
-	const states =["상태1","상태2","상태3"];
-	const [active, setActive] = useState<string>("상태1")
-	const StateStyle = styled.span<{$active: string}>`
+const StateStyle = styled.span<{$active: string}>`
 	${({ $active }) => {
 		if($active === '상태1'){
 			return `color: red`;
@@ -123,6 +119,9 @@ export function Count4(){
 		}
 	}}
 	`
+export function Count4(){
+	const states =["상태1","상태2","상태3"];
+	const [active, setActive] = useState<string>("상태1")
 	return(
     <>
 		<div className="practice_flex_col">
@@ -209,6 +208,50 @@ export function Count5(){
     </>
   )
 }
+export function Count6(){
+	const [과일들, set과일들]  = useState<string[]>([]);
+	const [입력값, set입력값] = useState<string>('');
+
+	const 감지 = (e: React.ChangeEvent<HTMLInputElement>) => {
+		set입력값(e.target.value)
+	}
+	const 엔터 =(e: React.KeyboardEvent<HTMLInputElement>)=>{
+		if(e.key === 'Enter'){
+
+			const 값 = 입력값.trim();
+			if (!값) return;
+			if (과일들.includes(값)) 
+				return (
+					alert(`${값}는 이미 있습니다.`),
+					set입력값('')
+				);
+
+			set과일들((새로운: string[]) => [...새로운, 입력값])
+			set입력값('');
+		}
+	}
+	return(
+    <>
+		<div className="practice_flex_col">
+			<div className="flex-center-gap-10">
+				<h2 className="practice_title">
+					5. 연습
+				</h2>
+			</div>
+			<div className="practice_flex">
+				<div className="flex-center-gap-10">
+					{과일들.map((과일) => {
+						return <div key={과일}>{과일}</div>
+					})}
+				</div>
+				<div>
+					<input type="text" value={입력값}  onChange={감지} onKeyDown={엔터} />
+				</div>
+			</div>
+		</div>
+    </>
+  )
+}
 function CountPage () {
     const { open, toggleModal, closeModal } = useModal();
     return(
@@ -237,6 +280,9 @@ function CountPage () {
 				</li>
 				<li className="practice_item">
             		<Count5/>
+				</li>
+				<li className="practice_item">
+            		<Count6/>
 				</li>
 			</ul>
             {open && (<ExplaninModal onClose={closeModal} content={<CounterExplain />} />)}
