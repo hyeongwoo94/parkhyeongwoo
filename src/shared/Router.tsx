@@ -1,13 +1,13 @@
 import { Route, Routes, useLocation  } from "react-router-dom";
 import Home from "../pages/Home";
-import CountPage from "../pages/CountPage";
-import TodoPage from "../pages/TodoPage";
-import Sub2 from "../pages/Sub2";
 import Layout from "../components/styles/Layout";
 import Counter from "../components/Counter";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import ErpHome from "../pages/erp/ErpHome";
+import CountPage from "../pages/CountPage";
+import TodoPage from "../pages/TodoPage";
+import MemoPage from "../pages/MemoPage";
 
 // 라우터 정의
 const Router = () => {
@@ -50,7 +50,7 @@ const Router = () => {
                 {/* 한국어 URL 그룹 */}
                 <Route path="/CountPage" element={<CountPage />} />
                 <Route path="/TodoPage" element={<TodoPage />} />
-                <Route path="/Sub2" element={<Sub2 />} />
+                <Route path="/MemoPage" element={<MemoPage />} />
                 <Route path="/Counter" element={<Counter />} />
                 <Route path="/erp/ErpHome" element={<ErpHome />} />
             </Route>

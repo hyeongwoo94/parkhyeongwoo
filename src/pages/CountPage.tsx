@@ -230,6 +230,10 @@ export function Count6(){
 			set입력값('');
 		}
 	}
+	const 삭제 = (삭제할과일:string) =>{
+		set과일들(과일들.filter((과일)=>과일 !== 삭제할과일))
+	}
+
 	return(
     <>
 		<div className="practice_flex_col">
@@ -241,7 +245,7 @@ export function Count6(){
 			<div className="practice_flex">
 				<div className="flex-center-gap-10">
 					{과일들.map((과일) => {
-						return <div key={과일}>{과일}</div>
+						return <div key={과일} onDoubleClick={() => {삭제(과일)}}>{과일}</div>
 					})}
 				</div>
 				<div>

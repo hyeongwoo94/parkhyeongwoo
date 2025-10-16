@@ -47,7 +47,11 @@ export function TodoItem({ todo, onDelete, onUpdate }: TodoItemProps) {
                         className="todo_item_text"
                         value={editText}
                         onChange={(e) => setEditText(e.target.value)}
-                        
+                        onKeyDown={(e) => {
+                            if(e.key === "Enter"){
+                                handleSave();
+                            }
+                        }}
                     />
                     ) : (
                     <p className="todo_item_text">{todo.text}</p>

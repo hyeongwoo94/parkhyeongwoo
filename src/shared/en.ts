@@ -3,6 +3,7 @@ export const en = {
         code_review: "Code view",
     },
     headerMenu:{
+        memo: "React Note",
         count: "useState",
         todo: "Todo",
         weather: "Weather",

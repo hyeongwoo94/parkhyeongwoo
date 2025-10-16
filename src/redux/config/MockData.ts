@@ -13,6 +13,7 @@ export const explanations = [
 ];
 
 export const headerMenu = [
+ {title:"memo", path:'/MemoPage' },
  {title:"count", path:'/CountPage' },
  {title:"todo", path:"/TodoPage"},
  {title:"weather", path:"/WeatherPage"},
